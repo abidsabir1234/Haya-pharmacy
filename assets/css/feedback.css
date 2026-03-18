@@ -1,0 +1,181 @@
+/* assets/css/feedback.css */
+.feedback-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.feedback-logo {
+    height: 6rem;
+    margin-bottom: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feedback-tagline {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+.survey-box {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    min-height: 460px; /* Fixed consistent height in all states */
+    height: 460px;      /* Force exact same height always */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+/* Ensure error messages don't shift layout */
+.survey-step {
+    display: none;
+    animation: fadeIn 0.4s ease;
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.survey-step.active {
+    display: flex;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: var(--color-muted);
+    border-radius: 999px;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    direction: ltr; /* To make it fill from right in RTL */
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--color-accent);
+    width: 0%;
+    transition: width 0.4s ease;
+    float: right; /* RTL support */
+}
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.question-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 2.5rem;
+}
+
+.emoji-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.emoji-btn {
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.emoji-btn:hover {
+    background: #fdfaf3;
+    border-color: var(--color-accent);
+    transform: scale(1.05);
+}
+
+.emoji-btn.selected {
+    border-color: var(--color-accent);
+    background: #fef8eb;
+}
+
+.emoji-icon {
+    font-size: 3rem;
+}
+
+.emoji-label {
+    font-weight: 700;
+    color: var(--color-muted-fg);
+}
+
+.emoji-btn.selected .emoji-label {
+    color: var(--color-primary);
+}
+
+.comment-area {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+    margin-bottom: 1.5rem;
+}
+
+.comment-area:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.phone-input-wrap {
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.optional-text {
+    font-size: 0.85rem;
+    color: var(--color-muted-fg);
+    font-weight: normal;
+    margin-right: 0.5rem;
+}
+
+/* Success state inside survey box */
+.success-msg {
+    text-align: center;
+}
+
+.success-msg h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .feedback-container {
+        margin: 2rem 1rem;
+        padding: 0;
+    }
+    .survey-box {
+        padding: 2rem 1.5rem;
+    }
+    .emoji-group {
+        gap: 1rem;
+    }
+    .emoji-icon {
+        font-size: 2.5rem;
+    }
+}
