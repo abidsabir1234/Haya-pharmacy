@@ -24,6 +24,17 @@
             });
         });
 
+        // Automatically show modal after 30 seconds (once per session)
+        if (!sessionStorage.getItem('haya_pioneers_modal_shown')) {
+            setTimeout(function () {
+                if (!overlay.classList.contains('open') && document.body.style.overflow !== 'hidden') {
+                    overlay.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                    sessionStorage.setItem('haya_pioneers_modal_shown', '1');
+                }
+            }, 30000);
+        }
+
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
         overlay.addEventListener('click', function (e) {
@@ -109,9 +120,38 @@
 
 
 
+    function initStickyCtaBtn() {
+        var btn = document.createElement('a');
+        btn.href = '#';
+        btn.className = 'haya-sticky-cta open-reg-modal';
+        btn.setAttribute('aria-label', 'تفعيل الآن');
+        btn.innerHTML = '<i class="fas fa-check-circle"></i><span>سجّل الآن</span>';
+        document.body.appendChild(btn);
+
+        var heroBtn = document.querySelector('.haya-btn-dark-green');
+        window.addEventListener('scroll', function () {
+            var threshold = heroBtn ? (heroBtn.getBoundingClientRect().bottom + window.scrollY + 50) : 300;
+            if (window.scrollY > threshold) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var overlay = document.getElementById('regModal');
+            if (overlay) {
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         initModal();
         initScrollNavbar();
+        initStickyCtaBtn();
     });
 
 }());

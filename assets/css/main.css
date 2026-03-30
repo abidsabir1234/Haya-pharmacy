@@ -2941,10 +2941,9 @@ select.form-control {
 }
 
 .text-underline {
-    text-decoration: underline;
-    text-decoration-color: var(--haya-green);
-    text-underline-offset: 4px;
+    text-decoration: none;
 }
+
 
 .haya-terms-row-subject {
     flex: 0 0 350px;
@@ -3461,4 +3460,60 @@ select.form-control {
         align-items: center !important;
         text-align: center !important;
     }
-}
+}
+
+/* ── Sticky Floating CTA Button ────────────────────────────── */
+.haya-sticky-cta {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    z-index: 9000;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: #BB9960;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 8px 30px rgba(187, 153, 96, 0.55);
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+    cursor: pointer;
+}
+
+.haya-sticky-cta.visible {
+    transform: translateX(-50%) translateY(0);
+}
+
+.haya-sticky-cta:hover {
+    background: #cba870;
+    box-shadow: 0 12px 40px rgba(187, 153, 96, 0.7);
+    transform: translateX(-50%) translateY(-3px);
+}
+
+.haya-sticky-cta i {
+    font-size: 1.2rem;
+}
+
+/* Pulse glow on mobile to attract attention */
+@keyframes haya-cta-pulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(187, 153, 96, 0.55); }
+    50%       { box-shadow: 0 8px 45px rgba(187, 153, 96, 0.85); }
+}
+
+@media (max-width: 768px) {
+    .haya-sticky-cta.visible {
+        animation: haya-cta-pulse 2s ease-in-out infinite;
+    }
+    .haya-sticky-cta {
+        font-size: 1rem;
+        padding: 0.8rem 1.8rem;
+    }
+}
+
