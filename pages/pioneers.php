@@ -46,7 +46,7 @@ include __DIR__ . '/../includes/header.php';
                 <p class="haya-hero-subtitle">
                     تقديرًا لثقتك ووجودك معنا في بداية رحلتنا، ندعوك للتسجيل الآن والانضمام إلى قائمة الانتظار للاستفادة من الخصومات والخدمات المميزة عند افتتاح الصيدلية.
                 </p>
-                <a href="#" class="haya-btn-dark-green open-reg-modal">سجّل للحصول على البطاقة</a>
+                <a href="#" class="haya-btn-dark-green open-reg-modal">سجّل الآن</a>
             </div>
             <!-- Right: Visual -->
             <div class="haya-hero-visual">

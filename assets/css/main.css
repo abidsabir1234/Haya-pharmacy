@@ -3423,4 +3423,23 @@ select.form-control {
     .haya-cta-title {
         font-size: 2.4rem;
     }
-}
+
+    /* Hero button mobile fix */
+    .haya-btn-dark-green {
+        display: inline-block !important;
+        margin: 0 auto;
+        padding: 0.8rem 2rem !important;
+        font-size: 1.1rem !important;
+        white-space: nowrap !important;
+        width: fit-content !important;
+        min-width: 180px;
+        text-align: center;
+    }
+
+    .haya-hero-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+}

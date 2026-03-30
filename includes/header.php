@@ -18,7 +18,7 @@ $siteUrl   = defined('SITE_URL') ? SITE_URL : '/Haya-Pharmacy';
     <link rel="stylesheet" href="<?= $siteUrl ?>/assets/css/main.css?v=2.7">
     <?php if (!empty($extraCss)): ?>
         <?php foreach ($extraCss as $css): ?>
-            <link rel="stylesheet" href="<?= $siteUrl ?>/assets/css/<?= $css ?>">
+            <link rel="stylesheet" href="<?= $siteUrl ?>/assets/css/<?= $css ?>?v=<?= filemtime(__DIR__ . '/../assets/css/' . $css) ?>">
         <?php endforeach; ?>
     <?php endif; ?> 
 
