@@ -2273,23 +2273,25 @@ select.form-control {
 }
 
 .modal-close-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: none;
+    background: transparent;
     border: none;
+    font-size: 2.5rem;
+    color: #005445;
     cursor: pointer;
-    color: #333;
-    transition: transform 0.3s ease;
+    line-height: 1;
+    z-index: 100;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-close-btn:hover {
-    transform: rotate(90deg);
-    color: #000;
+    transform: rotate(90deg) scale(1.1);
 }
 
 .modal-form-group {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: right;
 }
 
@@ -2297,34 +2299,32 @@ select.form-control {
     display: block;
     font-weight: 800;
     color: #005445;
-    margin-bottom: 1.2rem;
-    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
     text-align: right;
-    padding-right: 5.5rem;
 }
 
 .modal-input {
     width: 100%;
-    max-width: 550px;
-    margin: 0 auto;
-    padding: 1.4rem 2rem;
-    border: none;
+    height: 3.5rem;
+    padding: 0 1.5rem;
+    border: 1px solid transparent;
     border-radius: 12px;
     background: #fff;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: #333;
     text-align: right;
-    /* Align text left as requested */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     display: block;
+    box-sizing: border-box;
 }
 
 .modal-input:focus {
     outline: none;
+    border-color: #005445;
     box-shadow: 0 8px 25px rgba(0, 84, 69, 0.15);
-    transform: translateY(-2px);
 }
 
 .modal-select {

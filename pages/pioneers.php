@@ -276,17 +276,16 @@ include __DIR__ . '/../includes/header.php';
 
 <div id="regModal" class="reg-modal-overlay">
     <div class="reg-modal-content">
-        <button id="modalClose" class="modal-close-btn" aria-label="Close">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
+        <!-- Close button moved to form head -->
+
 
         <div id="modalFormWrap">
             <form id="regForm" method="POST" novalidate>
                 <div class="modal-form-group">
-                    <label class="modal-label">الاسم</label>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <label class="modal-label" style="margin-bottom: 0;">الاسم</label>
+                        <button type="button" id="modalClose" class="modal-close-btn" style="position: static; margin: 0; padding: 0; width: auto; height: auto; background: transparent;">&times;</button>
+                    </div>
                     <input type="text" id="reg_name" name="reg_name" class="modal-input" placeholder="محمد" required>
                 </div>
 
@@ -297,7 +296,7 @@ include __DIR__ . '/../includes/header.php';
 
                 <div class="modal-form-group">
                     <label class="modal-label">رقم التليفون</label>
-                    <input type="tel" id="reg_mobile" name="reg_mobile" class="modal-input" placeholder="+20 10xxxxxxxxx" required>
+                    <input type="tel" id="reg_mobile" name="reg_mobile" class="modal-input" placeholder="+964 7xx xxx xxxx" required>
                 </div>
 
                 <div class="modal-form-group">
@@ -313,9 +312,10 @@ include __DIR__ . '/../includes/header.php';
 
                 <div class="modal-btn-wrap">
                     <button type="submit" class="haya-btn-modal-submit">
-                        <i class="fas fa-user-plus"></i>
-                        سجل الآن
+                        <i class="fas fa-check-circle"></i>
+                        فعل الآن
                     </button>
+
                 </div>
             </form>
         </div>

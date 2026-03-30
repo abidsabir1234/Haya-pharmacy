@@ -362,13 +362,17 @@ include __DIR__ . '/../includes/header.php';
 <!-- ── Registration Modal ────────────────────────────────────────── -->
 <div class="pt-modal-overlay" id="regModal">
     <div class="pt-modal-content">
-        <button class="pt-modal-close" id="modalClose">&times;</button>
+        <!-- Close button moved to form head -->
+
         
         <div id="modalFormWrap">
             <div class="pt-modal-header-pattern"></div>
             <form id="regForm" class="pt-register-form">
                 <div class="pt-form-group">
-                    <label for="reg_name">الاسم</label>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <label for="reg_name" style="margin-bottom: 0;">الاسم</label>
+                        <button type="button" class="pt-modal-close" id="modalClose" style="position: static; margin: 0; font-size: 2rem;">&times;</button>
+                    </div>
                     <input type="text" id="reg_name" name="name" placeholder="محمد" required class="pt-form-control">
                     <span class="form-error" id="err_name"></span>
                 </div>
@@ -381,7 +385,7 @@ include __DIR__ . '/../includes/header.php';
 
                 <div class="pt-form-group">
                     <label for="reg_mobile">رقم التليفون</label>
-                    <input type="tel" id="reg_mobile" name="mobile" placeholder="+20 10xxxxxxxx" required class="pt-form-control">
+                    <input type="tel" id="reg_mobile" name="mobile" placeholder="+964 7xx xxx xxxx" required class="pt-form-control">
                     <span class="form-error" id="err_mobile"></span>
                 </div>
 
@@ -404,8 +408,8 @@ include __DIR__ . '/../includes/header.php';
                 <div id="globalError" class="global-error"></div>
 
                 <button type="submit" class="pt-btn-submit">
-                    <i class="fas fa-user-plus"></i>
-                    سجل الان
+                    <i class="fas fa-check-circle"></i>
+                    فعل الآن
                 </button>
             </form>
         </div>

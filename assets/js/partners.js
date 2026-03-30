@@ -108,7 +108,7 @@
 
                 var submitBtn = form.querySelector('.pt-btn-submit');
                 submitBtn.disabled = true;
-                submitBtn.textContent = 'جارٍ التسجيل...';
+                submitBtn.textContent = 'جارٍ التفعيل...';
 
                 fetch(SITE_URL + '/handlers/register-partner.php', {
                     method: 'POST',
@@ -133,7 +133,7 @@
                     })
                     .finally(function () {
                         submitBtn.disabled = false;
-                        submitBtn.textContent = 'سجل الآن';
+                        submitBtn.textContent = 'فعل الآن';
                     });
             });
         }
