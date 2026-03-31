@@ -41,13 +41,13 @@ include __DIR__ . '/../includes/header.php';
             <div class="haya-hero-content">
                 <h1 class="haya-hero-title"> احصل على بطاقة الأوائل
                      من صيدلية حيا</h1>
-                <p class="haya-hero-subtitle">ن من أوائل عملاء صيدلية حيا واحصل على بطاقة الأوائل التي صُممت لتمنحك مزايا حصرية وعروضًا خاصة.
+                <p class="haya-hero-subtitle">كن من أوائل عملاء صيدلية حيا واحصل على بطاقة الأوائل التي صُممت لتمنحك مزايا حصرية وعروضًا خاصة.
                 </p>
 
                 <p class="haya-hero-subtitle">
                     تقديرًا لثقتك ووجودك معنا في بداية رحلتنا، ندعوك للتسجيل الآن والانضمام إلى قائمة الانتظار للاستفادة من الخصومات والخدمات المميزة عند افتتاح الصيدلية.
                 </p>
-                <a href="#" class="haya-btn-dark-green open-reg-modal">سجّل الآن</a>
+                <a href="#" class="haya-btn-dark-green open-reg-modal">فعّل البطاقة الآن</a>
             </div>
             <!-- Right: Visual -->
             <div class="haya-hero-visual">
@@ -323,14 +323,13 @@ include __DIR__ . '/../includes/header.php';
 
         <div id="modalSuccess" class="success-message-wrap">
             <div class="success-top-content" style="text-align: right; padding-right: 9rem;">
-                <h2 class="success-title">شكرا لك</h2>
+                <h2 class="success-title">تم تفعيل كارت الأوائل بنجاح</h2>
                 <div class="success-body-rows">
-                    <p class="success-body-text">تم تسجيلك بنجاح في قائمة الانتظار لبطاقة الأوائل من صيدلية حيا.</p>
-                    <p class="success-body-text">هذه البطاقة تمنح حامليها مزايا حصرية وعروض خاصة .</p>
-                    <p class="success-body-text">سنقوم بالتواصل معك قريباً لإعلامك عند توفر البطاقة.</p>
+                    <p class="success-body-text">يمكنك الآن الاستفادة من مزايا وخصومات كارت الأوائل في صيدلية حيا.</p>
+                    <p class="success-body-text">استخدم بطاقتك عند زيارتك للصيدلية للحصول على العروض والخدمات الحصرية.</p>
                 </div>
                 <div class="success-footer-note">
-                    شكراً لاهتمامك، ونتطلع لخدمتك قريباً 💚
+                    نتطلع لخدمتك 💚
                 </div>
             </div>
 
