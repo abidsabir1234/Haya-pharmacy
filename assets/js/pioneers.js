@@ -6,6 +6,7 @@
 
     var SITE_URL = window.HAYA_SITE_URL || '/Haya-Pharmacy';
 
+    // ─── Modal ────────────────────────────────────────────────────
     function initModal() {
         var overlay = document.getElementById('regModal');
         var openBtns = document.querySelectorAll('.open-reg-modal');
@@ -15,14 +16,6 @@
         var successWrap = document.getElementById('modalSuccess');
 
         if (!overlay) return;
-
-        openBtns.forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                overlay.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            });
-        });
 
         // Automatically show modal after 30 seconds (once per session)
         if (!sessionStorage.getItem('haya_pioneers_modal_shown')) {
@@ -35,10 +28,22 @@
             }, 30000);
         }
 
+        openBtns.forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
         overlay.addEventListener('click', function (e) {
             if (e.target === overlay) closeModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
         });
 
         function closeModal() {
@@ -46,17 +51,26 @@
             document.body.style.overflow = '';
             setTimeout(function () {
                 if (form) form.reset();
+                clearErrors();
                 if (formWrap) formWrap.classList.remove('hide');
+                if (successWrap) successWrap.classList.add('hide');
                 if (successWrap) successWrap.classList.remove('show');
             }, 400);
         }
 
         if (form) {
+            var phoneInput = document.getElementById('reg_mobile');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function () {
+                    this.value = this.value.replace(/[^0-9+\s\u0660-\u0669\u06F0-\u06F9]/g, '');
+                });
+            }
+
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 if (!validateForm()) return;
 
-                var submitBtn = form.querySelector('.haya-btn-modal-submit');
+                var submitBtn = form.querySelector('.pt-btn-submit');
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'جارٍ التفعيل...';
 
@@ -68,13 +82,16 @@
                     .then(function (json) {
                         if (json.success) {
                             if (formWrap) formWrap.classList.add('hide');
-                            if (successWrap) successWrap.classList.add('show');
+                            if (successWrap) {
+                                successWrap.classList.remove('hide');
+                                successWrap.classList.add('show');
+                            }
                         } else {
-                            alert(json.message || 'حدث خطأ، حاول مرة أخرى');
+                            showGlobalError(json.message || 'حدث خطأ، حاول مرة أخرى');
                         }
                     })
                     .catch(function () {
-                        alert('حدث خطأ في الاتصال، حاول مرة أخرى');
+                        showGlobalError('حدث خطأ في الاتصال، حاول مرة أخرى');
                     })
                     .finally(function () {
                         submitBtn.disabled = false;
@@ -85,20 +102,49 @@
     }
 
     function validateForm() {
-        var name = document.getElementById('reg_name');
-        var mobile = document.getElementById('reg_mobile');
-        var gender = document.getElementById('reg_gender');
-        var dob = document.getElementById('reg_dob');
+        clearErrors();
+        var valid = true;
+        var name = document.querySelector('[name="name"]');
+        var mobile = document.querySelector('[name="mobile"]');
+        var gender = document.querySelector('[name="gender"]');
+        var dob = document.querySelector('[name="dob"]');
 
-        if (!name || !name.value.trim()) return false;
-        if (!mobile || !mobile.value.trim()) return false;
-        if (!gender || !gender.value) {
-            alert('يرجى اختيار الجنس');
-            return false;
+        if (!name || !name.value.trim() || name.value.trim().length < 3) {
+            showError('err_name', 'الاسم الكامل مطلوب (3 أحرف على الأقل)');
+            valid = false;
         }
-        if (!dob || !dob.value) return false;
+        if (!mobile || !/^[0-9+ ]{7,20}$/.test(mobile.value.trim())) {
+            showError('err_mobile', 'أدخل رقم هاتف صحيح');
+            valid = false;
+        }
+        if (!gender || !gender.value) {
+            showError('err_gender', 'يرجى اختيار الجنس');
+            valid = false;
+        }
+        if (!dob || !dob.value) {
+            showError('err_dob', 'يرجى اختيار تاريخ الميلاد');
+            valid = false;
+        }
+        return valid;
+    }
 
-        return true;
+    function showError(id, msg) {
+        var el = document.getElementById(id);
+        if (el) { el.textContent = msg; el.classList.add('show'); }
+        var input = document.getElementById(id.replace('err_', 'reg_'));
+        if (input) input.classList.add('error');
+    }
+
+    function clearErrors() {
+        document.querySelectorAll('.form-error').forEach(function (el) { el.classList.remove('show'); });
+        document.querySelectorAll('.pt-form-control').forEach(function (el) { el.classList.remove('error'); });
+        var ge = document.getElementById('globalError');
+        if (ge) ge.style.display = 'none';
+    }
+
+    function showGlobalError(msg) {
+        var ge = document.getElementById('globalError');
+        if (ge) { ge.textContent = msg; ge.style.display = 'block'; }
     }
 
     function initScrollNavbar() {
@@ -117,8 +163,6 @@
             }
         });
     }
-
-
 
     function initStickyCtaBtn() {
         var btn = document.createElement('a');

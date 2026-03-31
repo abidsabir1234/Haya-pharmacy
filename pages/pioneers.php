@@ -272,64 +272,66 @@ include __DIR__ . '/../includes/header.php';
 
 </div>
 
-<div id="regModal" class="reg-modal-overlay">
-    <div class="reg-modal-content">
-        <!-- Close button moved to form head -->
-
-
+<div id="regModal" class="pt-modal-overlay hide">
+    <div class="pt-modal-content">
         <div id="modalFormWrap">
-            <form id="regForm" method="POST" novalidate>
-                <div class="modal-form-group">
+            <div class="pt-modal-header-pattern"></div>
+            <form id="regForm" class="pt-register-form">
+                <div class="pt-form-group">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                        <label class="modal-label" style="margin-bottom: 0;">الاسم</label>
-                        <button type="button" id="modalClose" class="modal-close-btn" style="position: static; margin: 0; padding: 0; width: auto; height: auto; background: transparent;">&times;</button>
+                        <label for="reg_name" style="margin-bottom: 0;">الاسم</label>
+                        <button type="button" class="pt-modal-close" id="modalClose" style="position: static; margin: 0; font-size: 2rem;">&times;</button>
                     </div>
-                    <input type="text" id="reg_name" name="reg_name" class="modal-input" placeholder="محمد" required>
+                    <input type="text" id="reg_name" name="name" placeholder="محمد" required class="pt-form-control">
+                    <span class="form-error" id="err_name"></span>
                 </div>
 
-                <div class="modal-form-group">
-                    <label class="modal-label">تاريخ الميلاد</label>
-                    <input type="date" id="reg_dob" name="reg_dob" class="modal-input" placeholder="07/03/2000" required>
+                <div class="pt-form-group">
+                    <label for="reg_dob">تاريخ الميلاد</label>
+                    <input type="date" id="reg_dob" name="dob" placeholder="07/03/2000" required class="pt-form-control">
+                    <span class="form-error" id="err_dob"></span>
                 </div>
 
-                <div class="modal-form-group">
-                    <label class="modal-label">رقم التليفون</label>
-                    <input type="tel" id="reg_mobile" name="reg_mobile" class="modal-input" placeholder="+964 7xx xxx xxxx" required>
+                <div class="pt-form-group">
+                    <label for="reg_mobile">رقم التليفون</label>
+                    <input type="tel" id="reg_mobile" name="mobile" placeholder="+964 7xx xxx xxxx" required class="pt-form-control">
+                    <span class="form-error" id="err_mobile"></span>
                 </div>
 
-                <div class="modal-form-group">
-                    <label class="modal-label">ذكر/أنثى</label>
-                    <div class="modal-select-wrap">
-                        <select id="reg_gender" name="reg_gender" class="modal-input modal-select" required>
-                            <option value="" disabled selected>اختر الجنس</option>
-                            <option value="male">ذكر</option>
-                            <option value="female">أنثى</option>
-                        </select>
-                    </div>
+                <div class="pt-form-group">
+                    <label for="reg_gender">ذكر/أنثى</label>
+                    <select id="reg_gender" name="gender" required class="pt-form-control pt-form-select">
+                        <option value="" disabled selected>اختيار الجنس</option>
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                    <span class="form-error" id="err_gender"></span>
                 </div>
 
-                <div class="modal-btn-wrap">
-                    <button type="submit" class="haya-btn-modal-submit">
-                        <i class="fas fa-user-plus"></i>
-                        فعل الآن
-                    </button>
+                <div id="globalError" class="global-error"></div>
 
-                </div>
+                <button type="submit" class="pt-btn-submit">
+                    <i class="fas fa-user-plus"></i>
+                    فعل الآن
+                </button>
             </form>
         </div>
 
-        <div id="modalSuccess" class="success-message-wrap">
-            <div class="success-top-content" style="text-align: right; padding-right: 9rem;">
+        <div id="modalSuccess" class="pt-modal-success hide">
+            <div class="success-top-content">
+                <div class="success-icon"><img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Success" style="width: 5rem; height: auto;"></div>
                 <h2 class="success-title">تم تفعيل كارت الأوائل بنجاح</h2>
+                
                 <div class="success-body-rows">
                     <p class="success-body-text">يمكنك الآن الاستفادة من مزايا وخصومات كارت الأوائل في صيدلية حيا.</p>
                     <p class="success-body-text">استخدم بطاقتك عند زيارتك للصيدلية للحصول على العروض والخدمات الحصرية.</p>
                 </div>
+
                 <div class="success-footer-note">
                     نتطلع لخدمتك 💚
                 </div>
             </div>
-
+            
             <div class="success-logos-row">
                 <div class="success-logo-item">
                     <span>صيدلية حيا</span>
@@ -337,6 +339,10 @@ include __DIR__ . '/../includes/header.php';
                 <div class="success-logo-item">
                     <span class="partner-text">شريكك لحياة صحية</span>
                 </div>
+            </div>
+            
+            <div class="success-footer-btn">
+                <button onclick="location.reload()" class="pt-btn-green" style="padding: 0.8rem 3rem; font-size: 1rem;">إغلاق</button>
             </div>
         </div>
     </div>
