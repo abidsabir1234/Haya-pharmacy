@@ -11,7 +11,10 @@ $activePage = basename($_SERVER['PHP_SELF']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة التحكم | صيدلية حيا</title>
-    <link rel="icon" type="image/png" href="<?= SITE_URL ?>/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= SITE_URL ?>/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= SITE_URL ?>/assets/images/favicon.png">
+    <link rel="shortcut icon" href="<?= SITE_URL ?>/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="<?= SITE_URL ?>/assets/images/favicon.png">
     <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/main.css?v=0.02">
     <style>
     /* Force Madani Font strictly on Admin Area */
