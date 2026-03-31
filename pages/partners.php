@@ -155,10 +155,7 @@ include __DIR__ . '/../includes/header.php';
                             <img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Tick" class="haya-tick-icon">
                             <p>يختار العضو خدمة واحدة فقط من بين: (<strong>Skin Analyzer / InBody / Hair Analyzer</strong>).</p>
                         </div>
-                        <div class="haya-term-list-item">
-                            <img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Tick" class="haya-tick-icon">
-                            <p><strong class="text-underline">شرط عدم التراكم:</strong> <span class="text-underline">تسقط الاستفادة من الفحص الشهري بانتهاء الشهر التقويمي، ولا يحق للعضو المطالبة بالخدمات غير المستخدمة أو تدويرها للأشهر التالية.</span></p>
-                        </div>
+
                         <div class="haya-term-list-item">
                             <img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Tick" class="haya-tick-icon">
                             <p>تخضع الفحوصات لتوفر الأجهزة والمواعيد المتاحة لدى الصيدلية.</p>
@@ -191,7 +188,7 @@ include __DIR__ . '/../includes/header.php';
                         </div>
                         <div class="haya-term-list-item">
                             <img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Tick" class="haya-tick-icon">
-                            <p><span class="text-underline">يحق للصيدلية تحديد حد أدنى لقيمة الطلبات للاستفادة من ميزة التوصيل المجاني.</span></p>
+                            <p>يحق للصيدلية تحديد حد أدنى لقيمة الطلبات للاستفادة من ميزة التوصيل المجاني.</p>
                         </div>
                     </div>
                 </div>
