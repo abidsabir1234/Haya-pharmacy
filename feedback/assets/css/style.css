@@ -170,9 +170,10 @@ body {
   width: 13%; /* Reduced from 31% to fit corner better */
   height: auto;
   object-fit: contain;
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
 }
 
 .desktop-spacer {
@@ -184,7 +185,7 @@ body {
   /* Haya/Sand */
   font-family: "Tajawal", sans-serif;
   font-weight: 700;
-  font-size: 58px; /* Increased from 38px */
+  font-size: 42px; /* Reduced from 58px */
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
@@ -565,7 +566,7 @@ body.comments-step-active .mobile-header-logo {
   }
 
   .header-title {
-    font-size: 32px;
+    font-size: 28px; /* Reduced from 32px */
   }
 
   .buttons-container {

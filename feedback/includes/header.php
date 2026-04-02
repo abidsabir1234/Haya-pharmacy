@@ -33,9 +33,10 @@ $survey_type = $_SESSION['survey_type'] ?? 'visit';
     <div class="bg-pattern pattern-bottom-left"></div>
     <div class="bg-pattern pattern-bottom-right"></div>
 
+    <img src="assets/images/wide.png" alt="Haya Logo" class="desktop-header-logo">
+
     <div class="header-container">
         <div class="desktop-spacer"></div>
         <h1 class="header-title">شاركنا رأيك</h1>
-        <img src="assets/images/wide.png" alt="Haya Logo" class="desktop-header-logo">
     </div>
 </body>
