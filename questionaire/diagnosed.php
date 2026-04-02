@@ -92,7 +92,7 @@
       text-align: right;
       width: 100%;
       line-height: 1.7;
-      margin-bottom: 60px;
+      margin-bottom: 100px;
     }
 
     /* ══════════════════════════════
@@ -244,6 +244,8 @@
       .bar { width: 30px; }
     }
   </style>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 </head>
 <body>
 <div class="page">

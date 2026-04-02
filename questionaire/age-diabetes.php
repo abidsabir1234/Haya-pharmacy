@@ -92,7 +92,7 @@
       text-align: right;
       width: 100%;
       line-height: 1.5;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
     /* ── Question ── */
@@ -103,7 +103,7 @@
       text-align: right;
       width: 100%;
       line-height: 1.7;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
     }
 
     /* ══════════════════════════════
@@ -234,6 +234,8 @@
       .options-grid { grid-template-columns: 1fr; }
     }
   </style>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 </head>
 <body>
 <div class="page">

@@ -103,7 +103,7 @@
       text-align: right;     /* Aligned to right */
       width: 100%;             /* Ensure full width for alignment */
       line-height: 1.5;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
     /* ── Question ── */
@@ -114,7 +114,7 @@
       text-align: right;     /* Aligned to right */
       width: 100%;             /* Ensure full width for alignment */
       line-height: 1.7;
-      margin-bottom: 60px; /* Increased to move buttons down */
+      margin-bottom: 80px; /* Increased to move buttons down */
     }
 
     /* ══════════════════════════════
@@ -303,6 +303,8 @@
       .bar { width: 30px; }
     }
   </style>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 </head>
 <body>
 <div class="page">

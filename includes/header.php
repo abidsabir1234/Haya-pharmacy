@@ -12,10 +12,10 @@ $siteUrl   = defined('SITE_URL') ? SITE_URL : '/Haya-Pharmacy';
     <title><?= $pageTitle ?? 'صيدلية حيا - Haya Pharmacy' ?></title>
     <meta name="description" content="صيدلية حيا — شريكك لحياة صحية. برنامج الأوائل الحصري للعملاء المميزين.">
     <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= $siteUrl ?>/assets/images/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= $siteUrl ?>/assets/images/favicon.png">
-    <link rel="shortcut icon" href="<?= $siteUrl ?>/assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="<?= $siteUrl ?>/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= $siteUrl ?>/assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= $siteUrl ?>/assets/images/favicon.svg">
+    <link rel="shortcut icon" href="<?= $siteUrl ?>/assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="<?= $siteUrl ?>/assets/images/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="<?= $siteUrl ?>/assets/css/main.css?v=2.7">
     <?php if (!empty($extraCss)): ?>

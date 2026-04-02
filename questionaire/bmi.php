@@ -92,7 +92,7 @@
       text-align: right;
       width: 100%;
       line-height: 1.5;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
     /* ── Question ── */
@@ -103,7 +103,7 @@
       text-align: right;
       width: 100%;
       line-height: 1.7;
-      margin-bottom: 30px; /* Reduced margin to align closer to options */
+      margin-bottom: 50px; /* Reduced margin to align closer to options */
     }
 
     /* ══════════════════════════════
@@ -232,6 +232,8 @@
       }
     }
   </style>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 </head>
 <body>
 <div class="page">

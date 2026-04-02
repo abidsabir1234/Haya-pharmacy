@@ -143,7 +143,7 @@
       font-weight: 700;
       text-align: right;
       width: 100%;
-      margin-bottom: 25px;
+      margin-bottom: 65px;
     }
 
     .options-grid {
@@ -255,6 +255,8 @@
       .banner-logo { height: 50px; }
     }
   </style>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 </head>
 <body>
 <div class="page">

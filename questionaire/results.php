@@ -171,7 +171,7 @@ if (!empty($responses) && !isset($responses['SAVED_TO_DB'])) {
       text-align: center;
       width: 100%;
       line-height: 1.5;
-      margin-bottom: 25px;
+      margin-bottom: 45px;
     }
 
     .results-grid {
@@ -179,7 +179,7 @@ if (!empty($responses) && !isset($responses['SAVED_TO_DB'])) {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       width: 100%;
-      margin-bottom: 25px;
+      margin-bottom: 45px;
       flex: 1;
       overflow-y: auto;
       padding-bottom: 10px;
@@ -302,6 +302,8 @@ if (!empty($responses) && !isset($responses['SAVED_TO_DB'])) {
       .res-item { padding: 15px; }
     }
   </style>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 </head>
 <body>
 
