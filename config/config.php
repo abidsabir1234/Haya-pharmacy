@@ -40,9 +40,18 @@ define('DB_NAME', getenv('DB_NAME') ?: 'haya_pharmacy');
 define('DB_CHARSET', getenv('DB_CHARSET') ?: 'utf8mb4');
 
 // Site settings
+// Auto-detect base URL if not strictly defined in .env
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$fallbackUrl = $protocol . $host;
+// If we are on localhost, append the folder name, otherwise assume it's the web root.
+if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false) {
+    $fallbackUrl .= '/Haya-Pharmacy';
+}
+
 define('SITE_NAME', getenv('SITE_NAME') ?: 'صيدلية حيا');
 define('SITE_NAME_EN', getenv('SITE_NAME_EN') ?: 'Haya Pharmacy');
-define('SITE_URL', getenv('SITE_URL') ?: 'http://localhost/haya-pharmacy');
+define('SITE_URL', getenv('SITE_URL') ?: $fallbackUrl);
 
 // Timezone
 define('SITE_TIMEZONE', getenv('SITE_TIMEZONE') ?: 'Asia/Baghdad');
