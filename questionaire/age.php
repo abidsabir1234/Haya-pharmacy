@@ -39,24 +39,23 @@
 
     .pat-side {
       position: fixed;
-      top: -44px;
+      top: 0;
       width: 288px;
       height: 100vh;
       pointer-events: none;
       z-index: 0;
     }
     .pat-side.left  { left: 0; }
-    .pat-side.right { right: 0; transform: scaleX(-1); }
+    .pat-side.right { right: 0; }
 
-    .pat-layer {
+    .pat-img {
       position: absolute;
       top: 0;
       left: 0;
-      width: 288px;
-      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .p-l1 { height: 940.5px; transform: rotate(-180deg); opacity: 1; }
-    .p-l2 { height: 459.7px; opacity: 0.5; }
 
     .card {
       position: relative;
@@ -261,12 +260,10 @@
 <body>
 <div class="page">
   <div class="pat-side left" aria-hidden="true">
-    <img src="../assets/images/haya pattern  4.svg" class="pat-layer p-l1" alt="" />
-    <img src="../assets/images/haya pattern 3.svg" class="pat-layer p-l2" alt="" />
+    <img src="../assets/images/ch1.png" class="pat-img" alt="" />
   </div>
   <div class="pat-side right" aria-hidden="true">
-    <img src="../assets/images/haya pattern  4.svg" class="pat-layer p-l1" alt="" />
-    <img src="../assets/images/haya pattern 3.svg" class="pat-layer p-l2" alt="" />
+    <img src="../assets/images/ch2.png" class="pat-img" alt="" />
   </div>
 
   <div class="card">
