@@ -40,7 +40,7 @@ $survey_type = $_SESSION['survey_type'] ?? 'visit';
     <script>
         setTimeout(() => {
             window.location.href = 'index.php?branch=<?php echo htmlspecialchars($branch_slug); ?>&type=<?php echo htmlspecialchars($survey_type); ?>';
-        }, 10000);
+        }, 3000);
     </script>
 </body>
 
