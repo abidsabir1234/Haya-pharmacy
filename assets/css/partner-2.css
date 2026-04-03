@@ -3157,21 +3157,17 @@ select.form-control {
 .haya-partners-cta {
     background-color: #E9E0D9;
     background-image:
-        url('../images/right-pattern.svg'),
-        url('../images/left-pattern.svg'),
-        url('../images/haya pattern  4.svg');
+        url('../images/ch2.png'),
+        url('../images/ch1.png');
     background-position:
         right top,
-        left top,
-        center;
+        left top;
     background-repeat:
         repeat-y,
-        repeat-y,
-        no-repeat;
+        repeat-y;
     background-size:
         auto,
-        auto,
-        cover;
+        auto;
     padding: 6rem 5%;
     text-align: center;
     position: relative;
