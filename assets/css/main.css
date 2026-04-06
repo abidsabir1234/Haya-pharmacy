@@ -1376,29 +1376,29 @@ select.form-control {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3.5rem;
+    gap: 1.2rem;
+    margin-bottom: 2.8rem;
     direction: rtl;
 }
 
 .stat-card {
     background: #fdf6f2;
     /* Light peach bg from Figma */
-    padding: 1.5rem;
-    border-radius: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 1.2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 140px;
+    min-height: 112px;
     border: none;
     box-shadow: none;
 }
 
 .stat-card-label {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 800;
     color: #005445;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .stat-card-row {
@@ -1408,14 +1408,14 @@ select.form-control {
 }
 
 .stat-card-val {
-    font-size: 2.2rem;
+    font-size: 1.75rem;
     font-weight: 900;
     color: #005445;
 }
 
 .stat-card-icon {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background: #008b7a;
     /* Teal circle */
     border-radius: 50%;
@@ -1423,7 +1423,7 @@ select.form-control {
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 /* Table overrides to match Figma */
@@ -3240,36 +3240,36 @@ select.form-control {
 
 .admin-main-card {
     background: #fff;
-    border-radius: 2.5rem;
-    padding: 4rem;
+    border-radius: 2rem;
+    padding: 3rem;
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .admin-title-row h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 900;
     color: #005445;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     text-align: right;
 }
 
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-bottom: 5rem;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
 }
 
 .stat-card {
     background: #F5F0EC;
     /* Very light beige from screenshot */
-    border-radius: 2rem;
-    padding: 2.5rem;
+    border-radius: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
     transition: all 0.3s ease;
     border: none;
     text-align: right;
@@ -3277,12 +3277,12 @@ select.form-control {
 }
 
 .stat-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
 }
 
 .stat-card-label {
-    font-size: 1.3rem;
+    font-size: 1.05rem;
     font-weight: 900;
     color: #005445;
 }
@@ -3294,22 +3294,22 @@ select.form-control {
 }
 
 .stat-card-val {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 900;
     color: #005445;
 }
 
 .stat-card-icon {
-    width: 4rem;
-    height: 4rem;
+    width: 3.2rem;
+    height: 3.2rem;
     background: #005445;
     color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
-    box-shadow: 0 8px 20px rgba(0, 84, 69, 0.2);
+    font-size: 1.3rem;
+    box-shadow: 0 6px 16px rgba(0, 84, 69, 0.2);
     flex-shrink: 0;
 }
 

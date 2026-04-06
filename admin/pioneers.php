@@ -45,7 +45,7 @@ $stats = getCardStats('pioneers_cards');
             <div class="stat-card-label">تسجيلات اليوم</div>
             <div class="stat-card-row">
                 <div class="stat-card-icon no-bg">
-                    <img src="<?= SITE_URL ?>/assets/images/new.svg" alt="Total Icon" style="width: 4.5rem; height: 4.5rem;">
+                    <img src="<?= SITE_URL ?>/assets/images/new.svg" alt="Total Icon" style="width: 3.6rem; height: 3.6rem;">
                 </div>
                 <div class="stat-card-val"><?= number_format($stats['today']) ?></div>
             </div>
@@ -56,7 +56,7 @@ $stats = getCardStats('pioneers_cards');
             <div class="stat-card-label">إناث</div>
             <div class="stat-card-row">
                 <div class="stat-card-icon no-bg">
-                    <img src="<?= SITE_URL ?>/assets/images/female.svg" alt="Total Icon" style="width: 4.5rem; height: 4.5rem;">
+                    <img src="<?= SITE_URL ?>/assets/images/female.svg" alt="Total Icon" style="width: 3.6rem; height: 3.6rem;">
                 </div>
                 <div class="stat-card-val"><?= number_format($stats['females']) ?></div>
             </div>
@@ -67,7 +67,7 @@ $stats = getCardStats('pioneers_cards');
             <div class="stat-card-label">ذكور</div>
             <div class="stat-card-row">
                 <div class="stat-card-icon no-bg">
-                    <img src="<?= SITE_URL ?>/assets/images/male.svg" alt="Total Icon" style="width: 4.5rem; height: 4.5rem;">
+                    <img src="<?= SITE_URL ?>/assets/images/male.svg" alt="Total Icon" style="width: 3.6rem; height: 3.6rem;">
                 </div>
                 <div class="stat-card-val"><?= number_format($stats['males']) ?></div>
             </div>
@@ -78,7 +78,7 @@ $stats = getCardStats('pioneers_cards');
             <div class="stat-card-label">إجمالي المسجلين</div>
             <div class="stat-card-row">
                 <div class="stat-card-icon no-bg">
-                    <img src="<?= SITE_URL ?>/assets/images/Smile.svg" alt="Total Icon" style="width: 4.5rem; height: 4.5rem;">
+                    <img src="<?= SITE_URL ?>/assets/images/Smile.svg" alt="Total Icon" style="width: 3.6rem; height: 3.6rem;">
                 </div>
                 <div class="stat-card-val"><?= number_format($stats['total']) ?></div>
             </div>
