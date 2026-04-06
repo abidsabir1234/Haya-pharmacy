@@ -15,7 +15,7 @@ $activePage = basename($_SERVER['PHP_SELF']);
     <link rel="icon" type="image/png" sizes="16x16" href="<?= SITE_URL ?>/assets/images/favicon.png">
     <link rel="shortcut icon" href="<?= SITE_URL ?>/assets/images/favicon.png">
     <link rel="apple-touch-icon" href="<?= SITE_URL ?>/assets/images/favicon.png">
-    <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/main.css?v=0.02">
+    <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/main.css?v=0.04">
     <style>
     /* Force Madani Font strictly on Admin Area */
         .admin-body,
