@@ -93,6 +93,7 @@
                 if (form) form.reset();
                 clearErrors();
                 if (formWrap) formWrap.classList.remove('hide');
+                if (successWrap) successWrap.classList.add('hide');
                 if (successWrap) successWrap.classList.remove('show');
             }, 400);
         }
@@ -176,7 +177,7 @@
 
     function clearErrors() {
         document.querySelectorAll('.form-error').forEach(function (el) { el.classList.remove('show'); });
-        document.querySelectorAll('.form-control').forEach(function (el) { el.classList.remove('error'); });
+        document.querySelectorAll('.pt-form-control').forEach(function (el) { el.classList.remove('error'); });
         var ge = document.getElementById('globalError');
         if (ge) ge.style.display = 'none';
     }
@@ -254,7 +255,18 @@
         var heroBtn = document.querySelector('.haya-btn-dark-green');
         window.addEventListener('scroll', function () {
             var threshold = heroBtn ? (heroBtn.getBoundingClientRect().bottom + window.scrollY + 50) : 300;
-            if (window.scrollY > threshold) {
+            
+            // Check if the footer bar is visible to avoid overlapping footer text
+            var footer = document.querySelector('.haya-partners-footer-bar');
+            var isAtFooter = false;
+            if (footer) {
+                var footerRect = footer.getBoundingClientRect();
+                if (footerRect.top < window.innerHeight) {
+                    isAtFooter = true;
+                }
+            }
+
+            if (window.scrollY > threshold && !isAtFooter) {
                 btn.classList.add('visible');
             } else {
                 btn.classList.remove('visible');

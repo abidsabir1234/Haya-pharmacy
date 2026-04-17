@@ -64,23 +64,21 @@ include __DIR__ . '/../includes/header.php';
                 <div class="haya-features-row top">
                     <div class="haya-feature-card">
                         <div class="haya-feature-icon-circle">
-                            <i class="fas fa-chevron-left"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
                         </div>
-                        <div class="haya-feature-text">توصيل مجاني</div>
+                        <div class="haya-feature-text">خصم إضافي 10% على المنتجات و الأجهزة</div>
                     </div>
                     <div class="haya-feature-card">
                         <div class="haya-feature-icon-circle">
-                            <i class="fas fa-chevron-left"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
                         </div>
                         <div class="haya-feature-text">فحص مجاني شهري</div>
                     </div>
-
-
                     <div class="haya-feature-card">
                         <div class="haya-feature-icon-circle">
-                            <i class="fas fa-chevron-left"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                         </div>
-                        <div class="haya-feature-text">خصم إضافي 10% على المنتجات و الأجهزة</div>
+                        <div class="haya-feature-text">توصيل مجاني</div>
                     </div>
                 </div>
                 <!-- Row 2: 2 Wide Items -->
@@ -88,7 +86,7 @@ include __DIR__ . '/../includes/header.php';
 
                     <div class="haya-feature-card wide">
                         <div class="haya-feature-icon-circle">
-                            <i class="fas fa-chevron-left"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                         </div>
                         <div class="haya-feature-text">
                             <strong>عروض حصرية للأعضاء</strong>
@@ -97,7 +95,7 @@ include __DIR__ . '/../includes/header.php';
                     </div>
                     <div class="haya-feature-card wide">
                         <div class="haya-feature-icon-circle">
-                            <i class="fas fa-chevron-left"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                         </div>
                         <div class="haya-feature-text">
                             <strong>قائمة أولوية للمنتجات غير المتوفرة</strong>
@@ -318,6 +316,9 @@ include __DIR__ . '/../includes/header.php';
         </div>
 
         <div id="modalSuccess" class="pt-modal-success hide">
+            <div class="success-bg-ornament">
+                <img src="<?= SITE_URL ?>/assets/images/partner-card.svg" alt="">
+            </div>
             <div class="success-top-content">
                 <div class="success-icon"><img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Success" style="width: 5rem; height: auto;"></div>
                 <h2 class="success-title">تم تفعيل كارت الأوائل بنجاح</h2>

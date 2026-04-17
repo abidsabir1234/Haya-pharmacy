@@ -175,7 +175,18 @@
         var heroBtn = document.querySelector('.haya-btn-dark-green');
         window.addEventListener('scroll', function () {
             var threshold = heroBtn ? (heroBtn.getBoundingClientRect().bottom + window.scrollY + 50) : 300;
-            if (window.scrollY > threshold) {
+            
+            // Check if the footer bar is visible to avoid overlapping footer text
+            var footer = document.querySelector('.haya-partners-footer-bar');
+            var isAtFooter = false;
+            if (footer) {
+                var footerRect = footer.getBoundingClientRect();
+                if (footerRect.top < window.innerHeight) {
+                    isAtFooter = true;
+                }
+            }
+
+            if (window.scrollY > threshold && !isAtFooter) {
                 btn.classList.add('visible');
             } else {
                 btn.classList.remove('visible');
