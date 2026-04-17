@@ -61,7 +61,7 @@ include __DIR__ . '/../includes/header.php';
 
         <!-- Features Integrated into Hero -->
         <div class="haya-hero-features">
-            <h2 class="haya-hero-features-title">ميزات "الشر يك"</h2>
+            <h2 class="haya-hero-features-title">ميزات "الشريك"</h2>
             <div class="haya-features-container">
                 <!-- Row 1: 3 Items -->
                 <div class="haya-features-row top">
@@ -93,7 +93,7 @@ include __DIR__ . '/../includes/header.php';
                         </div>
                         <div class="haya-feature-text">
                             <strong>عروض حصرية للأعضاء</strong>
-                            <span>عروض أسبوعية أو شهرية متاحة حصرياً لأعضاء حيا "الأوائل" فقط</span>
+                            <span>عروض أسبوعية أو شهرية متاحة حصرياً لأعضاء حيا "الشريك" فقط</span>
                         </div>
                     </div>
                     <div class="haya-feature-card wide">
