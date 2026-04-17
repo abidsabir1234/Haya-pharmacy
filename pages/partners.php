@@ -356,6 +356,6 @@ include __DIR__ . '/../includes/header.php';
     </div>
 </div>
 
-<script src="<?= SITE_URL ?>/assets/js/partners.js"></script>
+<script src="<?= SITE_URL ?>/assets/js/partners.js?v=1.1"></script>
 </body>
 </html>

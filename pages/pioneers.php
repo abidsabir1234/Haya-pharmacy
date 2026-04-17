@@ -349,7 +349,7 @@ include __DIR__ . '/../includes/header.php';
     </div>
 </div>
 
-<script src="<?= SITE_URL ?>/assets/js/pioneers.js?v=0.01"></script>
+<script src="<?= SITE_URL ?>/assets/js/pioneers.js?v=1.1"></script>
 </body>
 
 </html>
