@@ -262,7 +262,7 @@ include __DIR__ . '/../includes/header.php';
                 </a>
                 <a href="tel:+9647700000000" class="haya-btn-cta-gold">
                         <img src="<?= SITE_URL ?>/assets/images/phone.svg" alt="Direct Service" class="pt-why-icon">
-                    اتصل بالخط الساخن
+                    اتصل بالخط السريع
                 </a>
             </div>
         </div>
