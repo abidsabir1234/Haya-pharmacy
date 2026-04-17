@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل دخول المسئول | صيدلية حيا</title>
+    <title>تسجيل دخول المسؤول | صيدلية حيا</title>
     <link rel="icon" type="image/png" href="<?= SITE_URL ?>/assets/images/favicon.png">
     <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/main.css?v=0.02">
     <style>
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="login-pattern"></div>
     <div class="login-card">
         <img src="<?= SITE_URL ?>/assets/images/haya-logo.png" alt="صيدلية حيا" class="login-logo">
-        <h2 class="login-title">لوحة تحكم المسئول</h2>
+        <h2 class="login-title">لوحة تحكم المسؤول</h2>
         
         <?php if ($error): ?>
             <div class="alert"><?= $error ?></div>
