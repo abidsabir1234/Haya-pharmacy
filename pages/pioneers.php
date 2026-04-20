@@ -51,7 +51,6 @@ include __DIR__ . '/../includes/header.php';
             </div>
             <!-- Right: Visual -->
             <div class="haya-hero-visual">
-                <img src="<?= SITE_URL ?>/assets/images/Group 1000004111.svg" alt="Health Symbol" class="haya-hero-health-symbol">
                 <img src="<?= SITE_URL ?>/assets/images/loyalty-cards.png" alt="Pioneers Cards" class="pioneers-cards-visual">
             </div>
         </div>
