@@ -101,7 +101,7 @@ body {
 }
 
 img {
-    max-width: 100%;
+    max-width: 90%;
     display: block;
 }
 
@@ -263,7 +263,7 @@ h6 {
 
 /* Top row: logo + close button */
 .mobile-menu-top-row {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -372,7 +372,7 @@ h6 {
     padding: 4rem;
     max-width: 1200px;
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
 }
 
 .hero-image-wrap {
@@ -383,7 +383,7 @@ h6 {
 
 .hero-card-img {
     max-width: 480px;
-    width: 100%;
+    width: 90%;
     filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4));
     animation: float 4s ease-in-out infinite;
 }
@@ -466,7 +466,7 @@ h6 {
     border: none;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
+    width: 90%;
     text-align: center;
 }
 
@@ -668,7 +668,7 @@ h6 {
 }
 
 .terms-check svg {
-    width: 100%;
+    width: 90%;
     height: 100%;
     stroke: var(--color-accent);
     fill: none;
@@ -863,7 +863,7 @@ h6 {
     background: #fff;
     border-radius: 1.25rem;
     padding: 2.5rem;
-    width: 100%;
+    width: 90%;
     max-width: 480px;
     position: relative;
     animation: modalIn 0.4s ease both;
@@ -935,7 +935,7 @@ h6 {
 }
 
 .form-control {
-    width: 100%;
+    width: 90%;
     padding: 0.8rem 1rem;
     border: 1.5px solid var(--color-border);
     border-radius: var(--radius);
@@ -978,7 +978,7 @@ select.form-control {
 }
 
 .form-submit {
-    width: 100%;
+    width: 90%;
     padding: 1rem;
     background: var(--color-primary);
     color: #fff;
@@ -1085,7 +1085,7 @@ select.form-control {
     padding: 3rem 2.5rem;
     text-align: center;
     max-width: 500px;
-    width: 100%;
+    width: 90%;
     animation: modalIn 0.5s ease both;
     position: relative;
 }
@@ -1273,12 +1273,12 @@ select.form-control {
 
     .cta-btn-group {
         flex-direction: column;
-        width: 100%;
+        width: 90%;
     }
 
     .cta-btn-green,
     .cta-btn-gold {
-        width: 100%;
+        width: 90%;
         justify-content: center;
     }
 
@@ -1307,7 +1307,7 @@ select.form-control {
     }
 
     .cta-btn {
-        width: 100%;
+        width: 90%;
         min-width: 0;
         padding: 1rem;
     }
@@ -1427,7 +1427,7 @@ select.form-control {
 }
 
 .admin-table-wrap table {
-    width: 100%;
+    width: 90%;
 }
 
 .admin-table-wrap table thead th {
@@ -1499,7 +1499,7 @@ select.form-control {
     background-color: #fcf8f4;
     /* Sophisticated Tan/Beige */
     min-height: 600px;
-    width: 100%;
+    width: 90%;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -1547,7 +1547,7 @@ select.form-control {
 }
 
 .hero-overlay-content {
-    width: 100%;
+    width: 90%;
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 4rem;
@@ -1569,7 +1569,7 @@ select.form-control {
 
 .hero-card-img-figma {
     max-width: 580px;
-    width: 100%;
+    width: 90%;
     filter: drop-shadow(0 30px 60px rgba(27, 67, 50, 0.2));
 }
 
@@ -1698,7 +1698,7 @@ select.form-control {
     position: absolute;
     left: 0;
     top: 50%;
-    width: 100%;
+    width: 90%;
     height: 1px;
     background: rgba(0, 0, 0, 0.2);
 }
@@ -1746,7 +1746,7 @@ select.form-control {
 }
 
 .pkg-img {
-    width: 100%;
+    width: 90%;
     height: 280px;
     object-fit: cover;
     transition: transform 0.5s ease;
@@ -1885,7 +1885,7 @@ select.form-control {
 .hero-content-wrapper {
     max-width: 1300px;
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1910,7 +1910,7 @@ select.form-control {
 }
 
 .hero-circle-frame .frame-img {
-    width: 100%;
+    width: 90%;
     height: 100%;
     object-fit: contain;
 }
@@ -1989,7 +1989,7 @@ select.form-control {
 }
 
 .mission-img-card {
-    width: 100%;
+    width: 90%;
     height: 400px;
     background: #005445;
     border-radius: 2.5rem;
@@ -2219,8 +2219,8 @@ select.form-control {
     }
 
     .p-feature-box {
-        width: 100%;
-        max-width: 100%;
+        width: 90%;
+        max-width: 90%;
     }
 }
 
@@ -2229,7 +2229,7 @@ select.form-control {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 100%;
     background: rgba(0, 0, 0, 0.1);
     -webkit-backdrop-filter: blur(4px);
@@ -2337,7 +2337,7 @@ select.form-control {
 }
 
 .modal-input {
-    width: 100%;
+    width: 90%;
     max-width: 550px;
     margin: 0 auto;
     padding: 1.4rem 2rem;
@@ -2509,7 +2509,7 @@ select.form-control {
 .haya-main-logo img {
     height: 5.5rem;
     width: auto;
-    max-width: 100%;
+    max-width: 90%;
     object-fit: contain;
     transition: all 0.4s ease;
 }
@@ -2559,7 +2559,7 @@ select.form-control {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 100%;
     background: url('../images/haya pattern 3.svg') center/cover no-repeat;
     opacity: 0.08;
@@ -2622,7 +2622,7 @@ select.form-control {
 .haya-hero-container {
     max-width: 1300px;
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -2666,7 +2666,7 @@ select.form-control {
 }
 
 .pioneers-cards-visual {
-    width: 100%;
+    width: 90%;
     max-width: 600px;
     filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.4));
     animation: floatCards 6s ease-in-out infinite;
@@ -2722,7 +2722,7 @@ select.form-control {
 }
 
 .haya-hero-features {
-    width: 100%;
+    width: 90%;
     max-width: 1300px;
     margin: 0 auto;
     z-index: 5;
@@ -3123,7 +3123,7 @@ select.form-control {
 
     .haya-terms-row-subject {
         flex: auto;
-        width: 100%;
+        width: 90%;
         text-align: right;
         border-bottom: 2px solid #bc9362;
         padding-bottom: 0.5rem;
@@ -3134,7 +3134,7 @@ select.form-control {
         font-size: 2.2rem;
         text-align: center;
         margin-right: 0;
-        max-width: 100%;
+        max-width: 90%;
         margin-bottom: 4rem;
     }
 
@@ -3363,12 +3363,12 @@ select.form-control {
 
 /* Admin Table Design */
 .admin-table-wrap {
-    width: 100%;
+    width: 90%;
     overflow-x: auto;
 }
 
 .admin-table-wrap table {
-    width: 100%;
+    width: 90%;
     border-collapse: separate;
     border-spacing: 0 0.8rem;
 }
@@ -3475,7 +3475,7 @@ select.form-control {
 
     .haya-btn-cta-gold,
     .haya-btn-cta-green {
-        width: 100%;
+        width: 90%;
         min-width: unset;
     }
 
@@ -3531,8 +3531,9 @@ select.form-control {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 100%;
-    max-width: 440px;
+    width: 90%;
+    max-width: 500px;
+    min-height: 620px;
     max-height: 95vh;
     overflow: hidden; /* Prevent outer scroll */
     border-radius: 2rem;
@@ -3548,8 +3549,10 @@ select.form-control {
     height: 100%;
     max-height: 95vh;
     overflow-y: auto;
-    padding: 2.5rem; /* Original modal padding moved here */
-    margin: 25px 0; /* Creates the "shorter" scrollbar effect */
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .pt-modal-content #modalFormWrap::-webkit-scrollbar {
@@ -3607,7 +3610,7 @@ select.form-control {
 }
 
 .pt-form-control {
-    width: 100%;
+    width: 90%;
     height: 3.5rem;
     padding: 0 1.2rem;
     border: 1px solid transparent;
@@ -3675,10 +3678,12 @@ input[type="date"].pt-form-control {
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 2.5rem 1.5rem;
+    padding: 4rem 2rem;
     display: none;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 620px;
 }
 
 .success-bg-ornament {
@@ -3705,7 +3710,7 @@ input[type="date"].pt-form-control {
 }
 
 .success-top-content {
-    width: 100%;
+    width: 90%;
     margin-bottom: 1.5rem;
 }
 
@@ -3791,7 +3796,7 @@ input[type="date"].pt-form-control {
     margin: 2.5rem 0 1.5rem 0;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(187, 153, 96, 0.2);
-    width: 100%;
+    width: 90%;
 }
 
 .success-logo-item {
@@ -3877,7 +3882,7 @@ input[type="date"].pt-form-control {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        width: 90%;
     }
 }
 
@@ -3965,7 +3970,7 @@ input[type="date"].pt-form-control {
     justify-content: center;
     margin-top: auto;
     padding-bottom: 2rem;
-    width: 100%;
+    width: 90%;
 }
 
 .mobile-menu-socials .haya-social-item {
@@ -4038,3 +4043,6 @@ input[type="date"].pt-form-control {
     text-align: left !important;
     background-color: transparent !important;
 }
+
+
+
