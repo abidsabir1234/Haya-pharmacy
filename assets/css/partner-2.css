@@ -3990,3 +3990,51 @@ input[type="date"].pt-form-control {
     height: 4rem;
     filter: brightness(0) invert(1);
 }
+
+/* -- Phone Number Input with Prefix -------------------------- */
+.haya-phone-input-group {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    direction: ltr !important; /* Force LTR for phone logic */
+}
+
+.haya-phone-prefix {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0 1.25rem;
+    border-right: 1.5px solid #eee;
+    background-color: #fafafa;
+    height: 3.5rem;
+    user-select: none;
+}
+
+.haya-flag-img {
+    width: 28px;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.haya-country-code {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #333;
+}
+
+.haya-input-phone {
+    border: none !important;
+    box-shadow: none !important;
+    flex: 1;
+    height: 3.5rem;
+    padding-left: 1.2rem;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    background-color: transparent !important;
+}

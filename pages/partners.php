@@ -303,7 +303,13 @@ include __DIR__ . '/../includes/header.php';
 
                 <div class="pt-form-group">
                     <label for="reg_mobile">رقم التليفون</label>
-                    <input type="tel" id="reg_mobile" name="mobile" placeholder="+964 7xx xxx xxxx" required class="pt-form-control">
+                    <div class="haya-phone-input-group">
+                        <div class="haya-phone-prefix">
+                            <img src="<?= SITE_URL ?>/assets/images/iq-flag.png" alt="IQ" class="haya-flag-img">
+                            <span class="haya-country-code">+964</span>
+                        </div>
+                        <input type="tel" id="reg_mobile" name="mobile" placeholder="7xx xxx xxxx" required class="pt-form-control haya-input-phone">
+                    </div>
                     <span class="form-error" id="err_mobile"></span>
                 </div>
 
