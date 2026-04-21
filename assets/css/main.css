@@ -305,6 +305,8 @@ h6 {
 
 .mobile-menu-socials {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1.2rem;
     justify-content: center;
     margin-top: auto;
@@ -2673,6 +2675,8 @@ select.form-control {
 .haya-social-item {
     width: 2.8rem;
     height: 2.8rem;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
     background: #bc9362;
     /* Gold/Brown background from screenshot */
     color: var(--haya-white);
@@ -2860,21 +2864,17 @@ select.form-control {
 .haya-partners-terms {
     background-color: #E9E0D9;
     background-image:
-        url('../images/right-pattern.svg'),
-        url('../images/left-pattern.svg'),
-        url('../images/haya pattern  4.svg');
+        url('../images/choocha2.jpeg'),
+        url('../images/choocha1.jpeg');
     background-position:
         right top,
-        left top,
-        center;
+        left top;
     background-repeat:
         repeat-y,
-        repeat-y,
-        no-repeat;
+        repeat-y;
     background-size:
         auto,
-        auto,
-        cover;
+        auto;
     padding: 8rem 5%;
     direction: rtl;
     position: relative;
@@ -3127,21 +3127,17 @@ select.form-control {
 .haya-partners-cta {
     background-color: #E9E0D9;
     background-image:
-        url('../images/right-pattern.svg'),
-        url('../images/left-pattern.svg'),
-        url('../images/haya pattern  4.svg');
+        url('../images/choocha2.jpeg'),
+        url('../images/choocha1.jpeg');
     background-position:
         right top,
-        left top,
-        center;
+        left top;
     background-repeat:
         repeat-y,
-        repeat-y,
-        no-repeat;
+        repeat-y;
     background-size:
         auto,
-        auto,
-        cover;
+        auto;
     padding: 6rem 5%;
     text-align: center;
     position: relative;

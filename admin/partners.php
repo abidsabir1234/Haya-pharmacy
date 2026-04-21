@@ -95,6 +95,7 @@ $stats = getCardStats('partners_cards');
                 <tr>
                     <th style="padding-right:0;">التاريخ والوقت</th>
                     <th>الاسم</th>
+                    <th>جهة العمل</th>
                     <th>تاريخ الميلاد</th>
                     <th>رقم التليفون</th>
                     <th>الجنس</th>
@@ -103,12 +104,13 @@ $stats = getCardStats('partners_cards');
             </thead>
             <tbody>
                 <?php if (empty($partners)): ?>
-                    <tr><td colspan="5" style="text-align:center; padding: 3rem; color: #999;">لا توجد سجلات مطابقة</td></tr>
+                    <tr><td colspan="6" style="text-align:center; padding: 3rem; color: #999;">لا توجد سجلات مطابقة</td></tr>
                 <?php else: ?>
                     <?php foreach ($partners as $p): ?>
                         <tr>
                             <td dir="ltr" style="font-size: 0.9rem; color: #666;"><?= iraqTime($p['created_at']) ?></td>
                             <td style="color: #005445; font-weight: 700;"><?= htmlspecialchars($p['full_name']) ?></td>
+                            <td><?= htmlspecialchars($p['business_name'] ?? '-') ?></td>
                             <td><?= htmlspecialchars($p['date_of_birth']) ?></td>
                             <td dir="ltr"><?= htmlspecialchars($p['mobile_number']) ?></td>
                             <td><?= $p['gender'] == 'male' ? 'ذكر' : 'أنثى' ?></td>

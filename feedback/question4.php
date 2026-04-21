@@ -28,7 +28,7 @@
                 <button class="emoji-btn <?php echo ($_SESSION['q4'] ?? '') == '3' ? 'selected' : ''; ?>" data-value="3" data-step="4">
                     <img src="assets/images/Ok.svg" class="emoji-img" alt="Happy">
                 </button>
-                <div class="emoji-label"><?php echo ($survey_type === 'delivery') ? 'إي، كامل وبحالة جيدة' : 'إي، متوفّرة'; ?></div>
+                <div class="emoji-label"><?php echo ($survey_type === 'delivery') ? 'إي، كامل وبحالة جيدة' : 'نعم، متوفّرة'; ?></div>
             </div>
         </div>
         <div id="selection-error">الرجاء اختيار تقييم قبل الانتقال للصفحة التالية</div>

@@ -91,6 +91,7 @@ $stats = getCardStats('pioneers_cards');
                 <tr>
                     <th style="padding-right:0;">التاريخ والوقت</th>
                     <th>الاسم</th>
+                    <th>جهة العمل</th>
                     <th>تاريخ الميلاد</th>
                     <th>رقم التليفون</th>
                     <th style="padding-left:0;">الجنس</th>
@@ -98,7 +99,7 @@ $stats = getCardStats('pioneers_cards');
             </thead>
             <tbody>
                 <?php if (empty($pioneers)): ?>
-                    <tr><td colspan="5" style="text-align:center; padding: 3rem; color: #999;">لا توجد سجلات مطابقة</td></tr>
+                    <tr><td colspan="6" style="text-align:center; padding: 3rem; color: #999;">لا توجد سجلات مطابقة</td></tr>
                 <?php else: ?>
                     <?php foreach ($pioneers as $p): 
                         $dt = new DateTime($p['created_at'], new DateTimeZone('UTC'));
@@ -112,6 +113,7 @@ $stats = getCardStats('pioneers_cards');
                                 <span style="font-weight: 800; color: #555;"><?= $displayTime ?></span>
                             </td>
                             <td class="name-cell"><?= htmlspecialchars($p['full_name']) ?></td>
+                            <td><?= htmlspecialchars($p['business_name'] ?? '-') ?></td>
                             <td><?= htmlspecialchars($p['date_of_birth']) ?></td>
                             <td dir="ltr"><?= htmlspecialchars($p['mobile_number']) ?></td>
                             <td><?= $p['gender'] == 'male' ? 'ذكر' : 'أنثى' ?></td>

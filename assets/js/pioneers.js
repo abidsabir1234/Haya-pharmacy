@@ -108,9 +108,14 @@
         var mobile = document.querySelector('[name="mobile"]');
         var gender = document.querySelector('[name="gender"]');
         var dob = document.querySelector('[name="dob"]');
+        var business = document.querySelector('[name="business"]');
 
         if (!name || !name.value.trim() || name.value.trim().length < 3) {
             showError('err_name', 'الاسم الكامل مطلوب (3 أحرف على الأقل)');
+            valid = false;
+        }
+        if (!business || !business.value.trim()) {
+            showError('err_business', 'جهة العمل مطلوبة');
             valid = false;
         }
         if (!mobile || !/^[0-9+ ]{7,20}$/.test(mobile.value.trim())) {

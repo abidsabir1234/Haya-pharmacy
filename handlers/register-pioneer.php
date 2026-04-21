@@ -15,10 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ── Collect and validate inputs ───────────────────────────────
-$name   = clean($_POST['name']   ?? '');
-$mobile = clean($_POST['mobile'] ?? '');
-$dob    = clean($_POST['dob']    ?? '');
-$gender = clean($_POST['gender'] ?? '');
+$name     = clean($_POST['name']      ?? '');
+$mobile   = clean($_POST['mobile']    ?? '');
+$dob      = clean($_POST['dob']       ?? '');
+$gender   = clean($_POST['gender']    ?? '');
+$business = clean($_POST['business']  ?? '');
 
 // Normalize Arabic numbers to English
 $arabicNum = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
@@ -32,6 +33,9 @@ $errors = [];
 
 if (mb_strlen($name) < 3) {
     $errors[] = 'الاسم يجب أن يكون 3 أحرف على الأقل';
+}
+if (empty($business)) {
+    $errors[] = 'جهة العمل مطلوبة';
 }
 if (!preg_match('/^[0-9+]{7,20}$/', $mobile)) {
     $errors[] = 'رقم الهاتف غير صحيح';
@@ -50,22 +54,40 @@ if (!empty($errors)) {
 }
 
 // ── Check for duplicate phone number ─────────────────────────
-$db   = getDB();
-$stmt = $db->prepare('SELECT id FROM pioneers_cards WHERE mobile_number = ?');
-$stmt->execute([$mobile]);
-if ($stmt->fetch()) {
-    jsonResponse(false, 'رقم الهاتف هذا مسجل بالفعل في قائمة الانتظار');
-}
-
-// ── Generate card number & insert ────────────────────────────
 try {
+    $db   = getDB();
+
+    // Auto-create/update table hotfix
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS `pioneers_cards` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `card_number` varchar(50) NOT NULL,
+            `full_name` varchar(255) NOT NULL,
+            `mobile_number` varchar(20) NOT NULL,
+            `business_name` varchar(255) DEFAULT NULL,
+            `gender` varchar(20) DEFAULT NULL,
+            `date_of_birth` date DEFAULT NULL,
+            `created_at` datetime NOT NULL,
+            PRIMARY KEY (`id`),
+            UNIQUE KEY (`card_number`),
+            UNIQUE KEY (`mobile_number`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ");
+
+    $stmt = $db->prepare('SELECT id FROM pioneers_cards WHERE mobile_number = ?');
+    $stmt->execute([$mobile]);
+    if ($stmt->fetch()) {
+        jsonResponse(false, 'رقم الهاتف هذا مسجل بالفعل في قائمة الانتظار');
+    }
+
+    // ── Generate card number & insert ────────────────────────────
     $cardNumber = generateCardNumber(PIONEER_PREFIX, 'pioneers_cards');
 
     $insert = $db->prepare(
-        'INSERT INTO pioneers_cards (card_number, full_name, mobile_number, gender, date_of_birth, created_at)
-         VALUES (?, ?, ?, ?, ?, NOW())'
+        'INSERT INTO pioneers_cards (card_number, full_name, mobile_number, business_name, gender, date_of_birth, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, NOW())'
     );
-    $insert->execute([$cardNumber, $name, $mobile, $gender, $dob]);
+    $insert->execute([$cardNumber, $name, $mobile, $business, $gender, $dob]);
 
     // ── Send WhatsApp welcome message (fire-and-forget) ───────
     @sendWhatsApp($mobile, buildRegistrationMessage('pioneer'));

@@ -314,6 +314,12 @@ include __DIR__ . '/../includes/header.php';
                 </div>
 
                 <div class="pt-form-group">
+                    <label for="reg_business">جهة العمل</label>
+                    <input type="text" id="reg_business" name="business" placeholder="اسم الشركة أو جهة العمل" required class="pt-form-control">
+                    <span class="form-error" id="err_business"></span>
+                </div>
+
+                <div class="pt-form-group">
                     <label for="reg_gender">ذكر/أنثى</label>
                     <select id="reg_gender" name="gender" required class="pt-form-control pt-form-select">
                         <option value="" disabled selected>اختيار الجنس</option>

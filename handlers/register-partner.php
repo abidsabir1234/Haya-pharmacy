@@ -19,6 +19,7 @@ $name     = clean($_POST['name']      ?? '');
 $mobile   = clean($_POST['mobile']    ?? '');
 $dob      = clean($_POST['dob']       ?? '');
 $gender   = clean($_POST['gender']    ?? '');
+$business = clean($_POST['business']  ?? '');
 
 // Normalize Arabic numbers to English
 $arabicNum = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
@@ -39,6 +40,9 @@ $errors = [];
 
 if (mb_strlen($name) < 3) {
     $errors[] = 'الاسم يجب أن يكون 3 أحرف على الأقل';
+}
+if (empty($business)) {
+    $errors[] = 'جهة العمل مطلوبة';
 }
 if (!preg_match('/^[0-9+]{7,20}$/', $mobile)) {
     $errors[] = 'رقم الهاتف غير صحيح';
@@ -67,6 +71,7 @@ try {
             `card_number` varchar(50) NOT NULL,
             `full_name` varchar(255) NOT NULL,
             `mobile_number` varchar(20) NOT NULL,
+            `business_name` varchar(255) DEFAULT NULL,
             `gender` varchar(20) DEFAULT NULL,
             `date_of_birth` date DEFAULT NULL,
             `passcode` varchar(50) DEFAULT NULL,
@@ -86,10 +91,10 @@ try {
     $cardNumber = generateCardNumber(PARTNER_PREFIX, 'partners_cards');
 
     $insert = $db->prepare(
-        'INSERT INTO partners_cards (card_number, full_name, mobile_number, gender, date_of_birth, created_at)
-         VALUES (?, ?, ?, ?, ?, NOW())'
+        'INSERT INTO partners_cards (card_number, full_name, mobile_number, business_name, gender, date_of_birth, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, NOW())'
     );
-    $insert->execute([$cardNumber, $name, $mobile, $gender, $dob]);
+    $insert->execute([$cardNumber, $name, $mobile, $business, $gender, $dob]);
 
     // ── Send WhatsApp welcome message (fire-and-forget) ───────
     @sendWhatsApp($mobile, buildRegistrationMessage('partner'));

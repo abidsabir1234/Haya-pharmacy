@@ -19,10 +19,10 @@ if ($type === 'pioneers' || $type === 'partners') {
     // Add BOM for Excel Arabic support
     fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
 
-    // Headers (Match UI Order: Date/Time, Name, DOB, Phone, Gender)
-    fputcsv($output, ['التاريخ والوقت', 'الاسم الكامل', 'تاريخ الميلاد', 'رقم الهاتف', 'الجنس']);
+    // Headers (Match UI Order: Date/Time, Name, Business, DOB, Phone, Gender)
+    fputcsv($output, ['التاريخ والوقت', 'الاسم الكامل', 'جهة العمل', 'تاريخ الميلاد', 'رقم الهاتف', 'الجنس']);
 
-    $query = "SELECT created_at, full_name, date_of_birth, mobile_number, gender FROM $table ORDER BY created_at DESC";
+    $query = "SELECT created_at, full_name, business_name, date_of_birth, mobile_number, gender FROM $table ORDER BY created_at DESC";
     $stmt = $db->query($query);
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

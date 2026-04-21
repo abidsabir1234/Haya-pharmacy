@@ -2251,9 +2251,9 @@ select.form-control {
 .reg-modal-content {
     background-color: #E9E0D9;
     background-image:
-        url('../images/right-pattern.svg'),
-        url('../images/left-pattern.svg'),
-        url('../images/haya pattern  4.svg');
+        url('../images/choocha2.jpeg'),
+        url('../images/choocha1.jpeg');
+
     background-position:
         right top,
         left top,
@@ -2683,6 +2683,8 @@ select.form-control {
 .haya-social-item {
     width: 2.8rem;
     height: 2.8rem;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
     background: #bc9362;
     /* Gold/Brown background from screenshot */
     color: var(--haya-white);
@@ -3610,7 +3612,7 @@ select.form-control {
 }
 
 .pt-form-control {
-    width: 90%;
+    width: 100%;
     height: 3.5rem;
     padding: 0 1.2rem;
     border: 1px solid transparent;
@@ -3966,6 +3968,8 @@ input[type="date"].pt-form-control {
 
 .mobile-menu-socials {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
     justify-content: center;
     margin-top: auto;
@@ -3976,6 +3980,8 @@ input[type="date"].pt-form-control {
 .mobile-menu-socials .haya-social-item {
     width: 3.5rem;
     height: 3.5rem;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
     background-color: #BB9960 !important; /* Haya Gold */
     color: #fff !important;
     border-radius: 50%;
