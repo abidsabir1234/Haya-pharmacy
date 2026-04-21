@@ -2251,21 +2251,21 @@ select.form-control {
 .reg-modal-content {
     background-color: #E9E0D9;
     background-image:
-        url('../images/choocha2.jpeg'),
-        url('../images/choocha1.jpeg');
+        url('../images/pat-right.svg'),
+        url('../images/pat-left.svg');
 
     background-position:
         right top,
-        left top,
-        center;
+        left top;
+
     background-repeat:
         repeat-y,
-        repeat-y,
-        no-repeat;
+        repeat-y;
+
     background-size:
         280px,
-        280px,
-        cover;
+        280px;
+
     width: 95%;
     max-width: 850px;
     padding: 2.5rem 3.5rem;
@@ -2901,8 +2901,8 @@ select.form-control {
 .haya-partners-terms {
     background-color: #E9E0D9;
     background-image:
-        url('../images/ch2.png'),
-        url('../images/ch1.png');
+        url('../images/pat-right.svg'),
+        url('../images/pat-left.svg');
     background-position:
         right top,
         left top;
@@ -2998,6 +2998,18 @@ select.form-control {
 /* Why Choose Haya Section */
 .haya-partners-why {
     background-color: #bc9362;
+    background-image:
+        url('../images/pat-right.svg'),
+        url('../images/pat-left.svg');
+    background-position:
+        right top,
+        left top;
+    background-repeat:
+        repeat-y,
+        repeat-y;
+    background-size:
+        auto,
+        auto;
     /* Gold background */
     padding: 6rem 5%;
     color: #fff;
@@ -3169,8 +3181,8 @@ select.form-control {
 .haya-partners-cta {
     background-color: #E9E0D9;
     background-image:
-        url('../images/ch2.png'),
-        url('../images/ch1.png');
+        url('../images/pat-right.svg'),
+        url('../images/pat-left.svg');
     background-position:
         right top,
         left top;
