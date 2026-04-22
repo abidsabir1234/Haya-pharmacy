@@ -42,40 +42,58 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/admin-style.css?v=2.7">
     <style>
+        body.login-page {
+            overflow: hidden !important;
+        }
         .bg-pattern {
             position: fixed !important;
-            width: 300px !important;
-            height: 300px !important;
-            opacity: 1.0 !important;
+            width: 288px !important;
+            height: 412.08px !important;
+            opacity: 1 !important;
             z-index: 1 !important;
             background-size: contain !important;
             background-repeat: no-repeat !important;
             pointer-events: none !important;
-            display: block !important;
         }
         .pattern-top-left {
+            width: 300px !important;
+            height: 300px !important;
             top: 0 !important;
             left: 0 !important;
             background-image: url('../assets/images/haya pattern  1.svg') !important;
+            background-position: top left !important;
+            transform: rotate(0deg) !important;
         }
         .pattern-top-right {
+            height: 300px !important;
+            width: 214px !important;
             top: 0 !important;
             right: 0 !important;
             background-image: url('../assets/images/haya pattern  2.svg') !important;
+            background-position: center !important;
+            transform: rotate(180deg) !important;
         }
         .pattern-bottom-left {
+            height: 300px !important;
+            width: 210px !important;
             bottom: 0 !important;
             left: 0 !important;
             background-image: url('../assets/images/haya pattern 3.svg') !important;
+            background-position: bottom left !important;
+            transform: rotate(180deg) !important;
         }
         .pattern-bottom-right {
+            height: 300px !important;
+            width: 210px !important;
             bottom: 0 !important;
             right: 0 !important;
             background-image: url('../assets/images/haya pattern  4.svg') !important;
+            background-position: center !important;
+            transform: rotate(0deg) !important;
         }
-        .login-wrapper { 
+        .login-wrapper {
             position: relative !important;
-            z-index: 10 !important; 
+            z-index: 10 !important;
         }
     </style>
 </head>
