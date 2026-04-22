@@ -45,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body class="login-page">
     <!-- Background Patterns -->
-    <div class="login-bg-pattern pattern-login-tl"></div>
-    <div class="login-bg-pattern pattern-login-tr"></div>
-    <div class="login-bg-pattern pattern-login-bl"></div>
-    <div class="login-bg-pattern pattern-login-br"></div>
+    <div class="bg-pattern pattern-top-left"></div>
+    <div class="bg-pattern pattern-top-right"></div>
+    <div class="bg-pattern pattern-bottom-left"></div>
+    <div class="bg-pattern pattern-bottom-right"></div>
 
     <div class="login-wrapper">
         <div class="login-card">

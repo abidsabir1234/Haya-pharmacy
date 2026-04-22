@@ -698,34 +698,46 @@ body.login-page {
   overflow: hidden;
 }
 
-.login-bg-pattern {
+/* Disable global patterns on the login page to prevent overlap */
+body.login-page::before {
+  content: none;
+}
+
+.bg-pattern {
   position: fixed;
-  width: 300px;
-  height: 420px;
+  width: 288px;
+  height: 412.08px;
   opacity: 1;
-  z-index: 0;
+  z-index: 1;
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
   filter: brightness(1);
 }
 
-.pattern-login-tl {
+.pattern-top-left {
+  width: 300px;
+  height: 300px;
   top: 0;
   left: 0;
   background-image: url("../images/haya%20pattern%20%201.svg");
   background-position: top left;
+  transform: rotate(0deg);
 }
 
-.pattern-login-tr {
+.pattern-top-right {
+  height: 300px;
+  width: 214px;
   top: 0;
   right: 0;
   background-image: url("../images/haya%20pattern%20%202.svg");
-  background-position: top right;
+  background-position: center;
   transform: rotate(180deg);
 }
 
-.pattern-login-bl {
+.pattern-bottom-left {
+  height: 300px;
+  width: 210px;
   bottom: 0;
   left: 0;
   background-image: url("../images/haya%20pattern%203.svg");
@@ -733,12 +745,16 @@ body.login-page {
   transform: rotate(180deg);
 }
 
-.pattern-login-br {
+.pattern-bottom-right {
+  height: 300px;
+  width: 210px;
   bottom: 0;
   right: 0;
   background-image: url("../images/haya%20pattern%20%204.svg");
-  background-position: bottom right;
+  background-position: center;
+  transform: rotate(0deg);
 }
+
 
 /* =============================================
    UTILITY

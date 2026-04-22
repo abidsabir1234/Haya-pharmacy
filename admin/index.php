@@ -53,17 +53,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             position: relative;
             overflow: hidden;
         }
-        .login-pattern {
-            position: absolute;
-            inset: 0;
+        .bg-pattern {
+            position: fixed;
+            width: 300px;
+            height: 300px;
             opacity: 0.1;
-            background-image: 
-                url('<?= SITE_URL ?>/assets/images/haya pattern 3.svg'), 
-                url('<?= SITE_URL ?>/assets/images/haya pattern  4.svg');
-            background-position: left bottom, right bottom;
+            z-index: 1;
+            background-size: contain;
             background-repeat: no-repeat;
-            background-size: 450px;
             pointer-events: none;
+        }
+        .pattern-top-left {
+            top: 0; left: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%20%201.svg');
+            background-position: top left;
+            transform: rotate(0deg);
+        }
+        .pattern-top-right {
+            top: 0; right: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%20%202.svg');
+            background-position: center;
+            transform: rotate(180deg);
+        }
+        .pattern-bottom-left {
+            bottom: 0; left: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%203.svg');
+            background-position: bottom left;
+            transform: rotate(180deg);
+        }
+        .pattern-bottom-right {
+            bottom: 0; right: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%20%204.svg');
+            background-position: center;
+            transform: rotate(0deg);
         }
         .login-card { 
             background: #fff; 
@@ -105,7 +127,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <div class="login-pattern"></div>
+    <div class="bg-pattern pattern-top-left"></div>
+    <div class="bg-pattern pattern-top-right"></div>
+    <div class="bg-pattern pattern-bottom-left"></div>
+    <div class="bg-pattern pattern-bottom-right"></div>
     <div class="login-card">
         <img src="<?= SITE_URL ?>/assets/images/haya-logo.png" alt="صيدلية حيا" class="login-logo">
         <h2 class="login-title">لوحة تحكم المسؤول</h2>
