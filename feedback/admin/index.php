@@ -40,7 +40,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>تسجيل الدخول - حيا للصيدليات</title>
     <link rel="icon" type="image/png" href="../assets/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/admin-style.css?v=2.2">
+    <link rel="stylesheet" href="../assets/css/admin-style.css?v=2.4">
+    <style>
+        .bg-pattern {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            opacity: 0.15;
+            z-index: 1;
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+        .pattern-top-left {
+            top: 0; left: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-1.svg');
+            background-position: top left;
+            transform: rotate(0deg);
+        }
+        .pattern-top-right {
+            top: 0; right: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-2.svg');
+            background-position: center;
+            transform: rotate(180deg);
+        }
+        .pattern-bottom-left {
+            bottom: 0; left: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-3.svg');
+            background-position: bottom left;
+            transform: rotate(180deg);
+        }
+        .pattern-bottom-right {
+            bottom: 0; right: 0;
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-4.svg');
+            background-position: center;
+            transform: rotate(0deg);
+        }
+        .login-wrapper { z-index: 5; }
+    </style>
 </head>
 
 <body class="login-page">
