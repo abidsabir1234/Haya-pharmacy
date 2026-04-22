@@ -274,12 +274,12 @@
 
   <!-- Background Patterns -->
       <div class="pat-side left" aria-hidden="true">
-    <img src="../assets/images/haya pattern  4.svg" class="pat-layer p-l1" alt="" />
-    <img src="../assets/images/haya pattern 3.svg" class="pat-layer p-l2" alt="" />
+    <img src="../assets/images/haya-pattern-4.svg" class="pat-layer p-l1" alt="" />
+    <img src="../assets/images/haya-pattern-3.svg" class="pat-layer p-l2" alt="" />
   </div>
   <div class="pat-side right" aria-hidden="true">
-    <img src="../assets/images/haya pattern  4.svg" class="pat-layer p-l1" alt="" />
-    <img src="../assets/images/haya pattern 3.svg" class="pat-layer p-l2" alt="" />
+    <img src="../assets/images/haya-pattern-4.svg" class="pat-layer p-l1" alt="" />
+    <img src="../assets/images/haya-pattern-3.svg" class="pat-layer p-l2" alt="" />
   </div>
 
   <!-- MAIN CARD -->

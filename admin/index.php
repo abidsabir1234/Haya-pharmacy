@@ -65,25 +65,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .pattern-top-left {
             top: 0; left: 0;
-            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%20%201.svg');
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-1.svg');
             background-position: top left;
             transform: rotate(0deg);
         }
         .pattern-top-right {
             top: 0; right: 0;
-            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%20%202.svg');
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-2.svg');
             background-position: center;
             transform: rotate(180deg);
         }
         .pattern-bottom-left {
             bottom: 0; left: 0;
-            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%203.svg');
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-3.svg');
             background-position: bottom left;
             transform: rotate(180deg);
         }
         .pattern-bottom-right {
             bottom: 0; right: 0;
-            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya%20pattern%20%204.svg');
+            background-image: url('<?= SITE_URL ?>/feedback/assets/images/haya-pattern-4.svg');
             background-position: center;
             transform: rotate(0deg);
         }

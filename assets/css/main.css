@@ -1346,8 +1346,8 @@ select.form-control {
     background: #E9E0D9;
     /* Requested background color */
     background-image:
-        url('../images/haya pattern 3.svg'),
-        url('../images/haya pattern  4.svg');
+        url('../images/haya-pattern-3.svg'),
+        url('../images/haya-pattern-4.svg');
     background-position: left bottom, right bottom;
     background-repeat: no-repeat;
     background-size: 400px;
@@ -2549,7 +2549,7 @@ select.form-control {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../images/haya pattern 3.svg') center/cover no-repeat;
+    background: url('../images/haya-pattern-3.svg') center/cover no-repeat;
     opacity: 0.08;
     pointer-events: none;
 }
