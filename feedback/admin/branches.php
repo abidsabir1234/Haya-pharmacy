@@ -34,8 +34,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_branch'])) {
     $message = "تم حذف الفرع.";
 }
 
-$stmt = $pdo->query("SELECT * FROM branches ORDER BY created_at DESC");
-$branches = $stmt->fetchAll();
+try {
+    $stmt = $pdo->query("SELECT * FROM branches ORDER BY created_at DESC");
+    $branches = $stmt->fetchAll();
+} catch (PDOException $e) {
+    // If table does not exist, create it
+    $pdo->exec("CREATE TABLE IF NOT EXISTS branches (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        branch_name VARCHAR(255) NOT NULL,
+        branch_slug VARCHAR(255) NOT NULL UNIQUE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
+    
+    // Also migrate existing distinct branches from feedback_responses
+    try {
+        $existing = $pdo->query("SELECT DISTINCT branch_id FROM feedback_responses")->fetchAll();
+        $insert_stmt = $pdo->prepare("INSERT IGNORE INTO branches (branch_name, branch_slug) VALUES (?, ?)");
+        foreach ($existing as $ex) {
+            if ($ex['branch_id']) {
+                $insert_stmt->execute([$ex['branch_id'], $ex['branch_id']]);
+            }
+        }
+    } catch (PDOException $e2) {
+        // Ignore if feedback_responses also missing
+    }
+    
+    // Re-query
+    $stmt = $pdo->query("SELECT * FROM branches ORDER BY created_at DESC");
+    $branches = $stmt->fetchAll();
+}
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">

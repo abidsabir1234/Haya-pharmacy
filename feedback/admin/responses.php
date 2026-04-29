@@ -33,22 +33,22 @@ if ($start_date && $end_date) {
 }
 
 if ($start_date) {
-    $where_clauses[] = "r.created_at >= ?";
+    $where_clauses[] = "r.submitted_at >= ?";
     $params[] = $start_date . " 00:00:00";
 }
 
 if ($end_date) {
-    $where_clauses[] = "r.created_at <= ?";
+    $where_clauses[] = "r.submitted_at <= ?";
     $params[] = $end_date . " 23:59:59";
 }
 
 if ($sentiment) {
     if ($sentiment === 'sad') {
-        $where_clauses[] = "(r.question_1_answer = 1 OR r.question_2_answer = 1 OR r.question_3_answer = 1 OR r.question_4_answer = 1)";
+        $where_clauses[] = "(r.q1_emoji = 'sad' OR r.q2_emoji = 'sad')";
     } elseif ($sentiment === 'neutral') {
-        $where_clauses[] = "(r.question_1_answer = 2 OR r.question_2_answer = 2 OR r.question_3_answer = 2 OR r.question_4_answer = 2)";
+        $where_clauses[] = "(r.q1_emoji = 'neutral' OR r.q2_emoji = 'neutral')";
     } elseif ($sentiment === 'happy') {
-        $where_clauses[] = "(r.question_1_answer = 3 OR r.question_2_answer = 3 OR r.question_3_answer = 3 OR r.question_4_answer = 3)";
+        $where_clauses[] = "(r.q1_emoji = 'happy' OR r.q2_emoji = 'happy')";
     }
 }
 
@@ -59,19 +59,19 @@ if ($has_comment === 'yes') {
 }
 
 if ($has_phone === 'yes') {
-    $where_clauses[] = "r.phone IS NOT NULL AND r.phone != ''";
+    $where_clauses[] = "r.phone_number IS NOT NULL AND r.phone_number != ''";
 } elseif ($has_phone === 'no') {
-    $where_clauses[] = "(r.phone IS NULL OR r.phone = '')";
+    $where_clauses[] = "(r.phone_number IS NULL OR r.phone_number = '')";
 }
 
 if ($survey_type_filter) {
-    $where_clauses[] = "r.survey_type = ?";
+    $where_clauses[] = "r.feedback_type = ?";
     $params[] = $survey_type_filter;
 }
 
 $where_sql = $where_clauses ? "WHERE " . implode(" AND ", $where_clauses) : "";
 
-$query = "SELECT r.*, b.branch_name FROM responses r LEFT JOIN branches b ON r.branch_id = b.id $where_sql ORDER BY r.created_at DESC";
+$query = "SELECT r.*, r.branch_id as branch_name FROM feedback_responses r $where_sql ORDER BY r.submitted_at DESC";
 
 // DEBUG INFO FOR LIVE SERVER
 $debug_info = [
@@ -89,26 +89,22 @@ try {
     $error = "Database Error: " . $e->getMessage();
 }
 
-$branches = $pdo->query("SELECT id, branch_name FROM branches ORDER BY branch_name ASC")->fetchAll();
+try {
+    $branches = $pdo->query("SELECT id, branch_name, branch_slug FROM branches ORDER BY branch_name ASC")->fetchAll();
+} catch (Exception $e) {
+    // Fallback if branches table doesn't exist
+    $branches = $pdo->query("SELECT DISTINCT branch_id as id, branch_id as branch_name, branch_id as branch_slug FROM feedback_responses ORDER BY branch_id ASC")->fetchAll();
+}
 
-function sentimentHtml($val, $type = 'face')
+function sentimentHtml($val)
 {
-    if ($type === 'face') {
-        $map = [
-            '3' => '../assets/images/Smile.png',
-            '2' => '../assets/images/Neutral.png',
-            '1' => '../assets/images/emoji_sad.png',
-        ];
-    } else {
-        // Q4: product availability
-        $map = [
-            '3' => '../assets/images/Ok.png',
-            '2' => '../assets/images/no.png',
-            '1' => '../assets/images/Bad.png',
-        ];
-    }
+    $map = [
+        'happy'   => '../assets/images/Smile.png',
+        'neutral' => '../assets/images/Neutral.png',
+        'sad'     => '../assets/images/emoji_sad.png',
+    ];
     if (!isset($map[$val])) return '-';
-    return '<img src="' . $map[$val] . '" alt="sentiment" style="width:32px;height:32px;object-fit:contain;">';
+    return '<img src="' . $map[$val] . '" alt="' . htmlspecialchars($val) . '" style="width:32px;height:32px;object-fit:contain;">';
 }
 ?>
 <!DOCTYPE html>
@@ -159,7 +155,7 @@ function sentimentHtml($val, $type = 'face')
                     <select name="branch_id">
                         <option value="">الكل</option>
                         <?php foreach ($branches as $b): ?>
-                            <option value="<?php echo $b['id']; ?>" <?php echo $branch_id == $b['id'] ? 'selected' : ''; ?>>
+                            <option value="<?php echo $b['branch_slug'] ?? $b['id']; ?>" <?php echo $branch_id == ($b['branch_slug'] ?? $b['id']) ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($b['branch_name']); ?>
                             </option>
                         <?php endforeach; ?>
@@ -246,8 +242,6 @@ function sentimentHtml($val, $type = 'face')
                             <th>نوع الاستبيان</th>
                             <th>تقييم الزيارة/التوصيل</th>
                             <th>وقت الانتظار/سرعة التوصيل</th>
-                            <th>تعاون الموظفين/الموصّل</th>
-                            <th>توفر المنتجات/اكتمال الطلب</th>
                             <th>رقم الموبايل</th>
                             <th>تعليق</th>
                         </tr>
@@ -256,16 +250,14 @@ function sentimentHtml($val, $type = 'face')
                         <?php foreach ($responses as $row): ?>
                             <tr>
                                 <td class="text-muted" style="font-size:12px; white-space:nowrap;">
-                                    <?php echo date('Y-m-d', strtotime($row['created_at'])); ?><br>
-                                    <?php echo date('H:i', strtotime($row['created_at'])); ?>
+                                    <?php echo date('Y-m-d', strtotime($row['submitted_at'])); ?><br>
+                                    <?php echo date('H:i', strtotime($row['submitted_at'])); ?>
                                 </td>
                                 <td><?php echo htmlspecialchars($row['branch_name']); ?></td>
-                                <td><?php echo ($row['survey_type'] ?? 'visit') === 'delivery' ? 'توصيل' : 'زيارة'; ?></td>
-                                <td><?php echo sentimentHtml($row['question_1_answer'], 'face'); ?></td>
-                                <td><?php echo sentimentHtml($row['question_3_answer'], 'face'); ?></td>
-                                <td><?php echo sentimentHtml($row['question_2_answer'], 'face'); ?></td>
-                                <td><?php echo sentimentHtml($row['question_4_answer'], 'product'); ?></td>
-                                <td style="direction:ltr;"><?php echo htmlspecialchars($row['phone'] ?: '-'); ?></td>
+                                <td><?php echo ($row['feedback_type'] ?? 'visit') === 'delivery' ? 'توصيل' : 'زيارة'; ?></td>
+                                <td><?php echo sentimentHtml($row['q1_emoji']); ?></td>
+                                <td><?php echo sentimentHtml($row['q2_emoji']); ?></td>
+                                <td style="direction:ltr;"><?php echo htmlspecialchars($row['phone_number'] ?: '-'); ?></td>
                                 <td class="comment-cell"><?php echo htmlspecialchars($row['comment'] ?: '-'); ?></td>
                             </tr>
                         <?php endforeach; ?>
