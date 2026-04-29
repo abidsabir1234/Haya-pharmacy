@@ -24,6 +24,17 @@
       src: local('Arial'), local('Helvetica'), local('system-ui'), local('sans-serif');
       unicode-range: U+0020-007E, U+0660-0669, U+06F0-06F9;
     }
+    .restart-link {
+      margin-right: auto;
+      color: #015645;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .restart-link:hover {
+      opacity: 0.7;
+    }
   </style>
 
   <style>
@@ -39,7 +50,7 @@
     }
 
     /* ── Page shell ── */
-    .page {
+        .page {
       position: relative;
       width: 100%;
       height: 100vh;
@@ -52,21 +63,20 @@
     }
 
     /* ── Logo (absolute, top-left) ── */
-    .top-logo-area {
+        .top-logo-area {
       position: absolute;
-      top: 30px;
-      left: 40px;
+      top: 40px; left: 60px;
       z-index: 10;
     }
 
-    .header-logo-mini {
-      height: 45px;
+        .header-logo-mini {
+      height: 85px;
       object-fit: contain;
     }
 
     /* ── Upper header row ── */
     .upper-header {
-      width: min(1280px, calc(100vw - 64px));
+      width: min(1280px, calc(100vw - 120px));
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -81,8 +91,8 @@
       color: #BB9960;
     }
 
-    .header-title {
-      font-size: clamp(20px, 2.2vw, 28px);
+        .header-title {
+      font-size: clamp(26px, 3.2vw, 36px);
       font-weight: 800;
       margin: 0;
     }
@@ -117,26 +127,28 @@
     /* ══════════════════════════════
        MAIN SURVEY CARD
     ══════════════════════════════ */
-    .card {
+            .card {
       position: relative;
       z-index: 1;
       background-color: #F6EDEA;
       border-radius: 14px;
       border: 1px solid rgba(187, 153, 96, 0.18);
-      width: min(1280px, calc(100vw - 64px));
-      height: min(815px, calc(100vh - 150px));
+      width: min(1280px, calc(100vw - 120px));
+      height: min(815px, calc(100vh - 220px));
       display: flex;
       flex-direction: column;
       padding-top: 20px;
+      overflow: hidden;
     }
 
-    .card-body {
-      padding: 60px;
+            .card-body {
+      padding: 40px 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
       flex: 1;
       min-height: 0;
+      overflow-y: auto;
     }
 
     /* ── Question ── */
@@ -277,12 +289,12 @@
     /* ══════════════════════════════
        RESPONSIVE
     ══════════════════════════════ */
-    @media (max-width: 900px) {
-      .card { width: calc(100vw - 120px); }
+        @media (max-width: 900px) {
+      .card { width: calc(100vw - 64px); }
       .options-grid { grid-template-columns: 1fr; gap: 12px; }
     }
 
-    @media (max-width: 600px) {
+        @media (max-width: 600px) {
       .card { width: calc(100vw - 32px); height: calc(100vh - 80px); }
       .card-body { padding: 24px 20px 22px; }
       .opt-btn { height: 52px; font-size: 15px; }

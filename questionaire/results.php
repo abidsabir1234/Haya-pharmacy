@@ -123,9 +123,16 @@ if (!empty($responses) && !isset($responses['SAVED_TO_DB'])) {
       background-color: #E9E0D9; color: #015645;
     }
 
-    .page {
-      position: relative; width: 100%; height: 100vh;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
+        .page {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 24px 0 20px;
     }
 
     .pat-side {
@@ -136,15 +143,17 @@ if (!empty($responses) && !isset($responses['SAVED_TO_DB'])) {
     .pat-side.right { right: 0; }
     .pat-img { width: 100%; height: 100%; object-fit: cover; }
 
-    .card {
-      position: relative; z-index: 1;
+            .card {
+      position: relative;
+      z-index: 1;
       background-color: #F6EDEA;
       border-radius: 14px;
       border: 1px solid rgba(187, 153, 96, 0.18);
-      width: min(1280px, calc(100vw - 64px));
-      height: min(850px, calc(100vh - 100px));
-      display: flex; flex-direction: column;
-      padding: 40px 60px 30px;
+      width: min(1280px, calc(100vw - 120px));
+      height: min(815px, calc(100vh - 220px));
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
       overflow: hidden;
     }
 
@@ -218,9 +227,43 @@ if (!empty($responses) && !isset($responses['SAVED_TO_DB'])) {
     .disclaimer h3 { color: #015645; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
     .disclaimer p { font-size: 14px; color: #015645; line-height: 1.6; font-weight: 500; }
 
-    @media (max-width: 900px) {
-      .results-grid { grid-template-columns: 1fr; }
-      .card { width: calc(100vw - 32px); padding: 30px 20px; }
+    .restart-area {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 10px;
+    }
+
+    .restart-btn {
+      background-color: #015645;
+      color: #fff;
+      padding: 14px 40px;
+      border-radius: 99px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .restart-btn:hover {
+      background-color: #014739;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .restart-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+        @media (max-width: 900px) {
+      .card { width: calc(100vw - 64px); }
+      .options-grid { grid-template-columns: 1fr; gap: 12px; }
     }
   
     @font-face {
@@ -320,6 +363,13 @@ if (!empty($responses) && !isset($responses['SAVED_TO_DB'])) {
     <div class="disclaimer">
       <h3>ملاحظة مهمة</h3>
       <p>هذا التقرير هو لأغراض التوعية والإرشاد فقط بناءً على إجاباتك في الاستبيان. ولا يُعتبر تشخيصاً طبياً ولا يغني عن استشارة الطبيب.</p>
+    </div>
+
+    <div class="restart-area">
+      <a href="restart.php" class="restart-btn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        إعادة الفحص لمريض آخر
+      </a>
     </div>
   </div>
 </div>

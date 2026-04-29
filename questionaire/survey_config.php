@@ -55,6 +55,32 @@ define('SURVEY_STEPS', [
 ]);
 
 /**
+ * Grouping pages for conditional skipping
+ */
+define('THYROID_PAGES', [
+    'index.php', 'heart-sweat.php', 'fatigue.php', 'temp-sensitivity.php', 
+    'skin-hair.php', 'weight-change.php', 'period-regularity.php'
+]);
+
+define('DIABETES_PAGES', [
+    'age-diabetes.php', 'diabetes-family.php', 'physical-activity.php', 
+    'fruits-veg.php', 'high-blood-sugar.php', 'blood-pressure-history.php',
+    'age-40plus.php', 'symptoms-check.php', 'activity-150min.php', 
+    'bmi-check-bp.php', 'high-salt-foods.php', 'smoking-shisha.php', 
+    'diabetes-cholesterol.php'
+]);
+
+define('BP_PAGES', [
+    'vitamin-deficiency.php', 'vitamin-diet.php', 'blood-pressure-meds.php', 
+    'vitamin-fatigue.php', 'vitamin-hair.php', 'vitamin-muscle.php', 
+    'vitamin-skin-nails.php', 'vitamin-appetite.php'
+]);
+
+define('FEMALE_ONLY_PAGES', [
+    'period-regularity.php'
+]);
+
+/**
  * Helper to get current file position in the sequence.
  */
 function getCurrentStepIndex() {
@@ -64,20 +90,58 @@ function getCurrentStepIndex() {
 }
 
 /**
+ * Check if a page should be skipped based on user responses.
+ */
+function shouldSkipPage($filename) {
+    $responses = $_SESSION['survey_responses'] ?? [];
+    $gender = $responses['gender.php'] ?? '';
+    $chronic = $responses['chronic-diseases.php'] ?? '';
+    $chronicArr = explode(',', $chronic);
+
+    // Skip female-only pages if male
+    if (in_array($filename, FEMALE_ONLY_PAGES) && $gender === 'male') {
+        return true;
+    }
+
+    // Skip Thyroid screening if already has thyroid disease
+    if (in_array($filename, THYROID_PAGES) && in_array('thyroid', $chronicArr)) {
+        return true;
+    }
+
+    // Skip Diabetes screening if already has diabetes
+    if (in_array($filename, DIABETES_PAGES) && in_array('diabetes', $chronicArr)) {
+        return true;
+    }
+
+    // Skip BP screening if already has hypertension (pressure)
+    if (in_array($filename, BP_PAGES) && in_array('pressure', $chronicArr)) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * Get Next & Prev URLs dynamically.
  */
 function getNextStepUrl() {
     $index = getCurrentStepIndex();
-    if ($index < count(SURVEY_STEPS) - 1) {
-        return SURVEY_STEPS[$index + 1];
+    for ($i = $index + 1; $i < count(SURVEY_STEPS); $i++) {
+        $nextFile = SURVEY_STEPS[$i];
+        if (!shouldSkipPage($nextFile)) {
+            return $nextFile;
+        }
     }
     return 'results.php';
 }
 
 function getPrevStepUrl() {
     $index = getCurrentStepIndex();
-    if ($index > 0) {
-        return SURVEY_STEPS[$index - 1];
+    for ($i = $index - 1; $i >= 0; $i--) {
+        $prevFile = SURVEY_STEPS[$i];
+        if (!shouldSkipPage($prevFile)) {
+            return $prevFile;
+        }
     }
     return '../index.php'; // Back to home if first step
 }
@@ -107,8 +171,14 @@ function getProgressBarsHtml() {
 /**
  * Saves current page answer and redirects to the next page.
  */
+$currentPage = basename($_SERVER['PHP_SELF']);
+
+// Requirement 1 & 4: Clear cache if on welcome.php or if specifically requested
+if ($currentPage === 'welcome.php') {
+    $_SESSION['survey_responses'] = [];
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['survey_answer'])) {
-    $currentPage = basename($_SERVER['PHP_SELF']);
     $_SESSION['survey_responses'][$currentPage] = $_POST['survey_answer'];
     
     $nextUrl = getNextStepUrl();

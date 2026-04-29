@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin_id'])) {
 $branch_id = $_GET['branch_id'] ?? '';
 $start_date = $_GET['start_date'] ?? '';
 $end_date = $_GET['end_date'] ?? '';
-$survey_type_filter = $_GET['survey_type'] ?? '';
+$survey_type_filter = $_GET['survey_type'] ?? 'visit';
 
 $where_clauses = [];
 $params = [];

@@ -25,6 +25,17 @@
       src: local('Arial'), local('Helvetica'), local('system-ui'), local('sans-serif');
       unicode-range: U+0020-007E, U+0660-0669, U+06F0-06F9;
     }
+    .restart-link {
+      margin-right: auto;
+      color: #015645;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .restart-link:hover {
+      opacity: 0.7;
+    }
   </style>
 
   <style>
@@ -41,14 +52,16 @@
     }
 
     /* ── Page shell: fills 100vh exactly ── */
-    .page {
+        .page {
       position: relative;
       width: 100%;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      padding: 24px 0 20px;
     }
 
     /* ══════════════════════════════
@@ -78,27 +91,24 @@
     /* ══════════════════════════════
        MAIN SURVEY CARD (Matched to index.php)
     ══════════════════════════════ */
-    .card {
+            .card {
       position: relative;
       z-index: 1;
       background-color: #F6EDEA;
       border-radius: 14px;
       border: 1px solid rgba(187, 153, 96, 0.18);
-
-      width: min(1400px, calc(100vw - 200px));
-      height: calc(100vh - 80px);
-      max-height: 780px;
-
-      padding: 40px 60px 36px;
+      width: min(1280px, calc(100vw - 120px));
+      height: min(815px, calc(100vh - 220px));
       display: flex;
       flex-direction: column;
-      align-items: center;
+      padding-top: 20px;
+      overflow: hidden;
     }
 
     /* ── Title ── */
     .title {
       color: #BB9960;
-      font-size: clamp(17px, 1.6vw, 24px);
+      font-size: clamp(24px, 2.5vw, 32px);
       font-weight: 700;
       text-align: right;
       width: 100%;
@@ -241,18 +251,16 @@
       color: #9E948E;
     }
 
-    @media (max-width: 900px) {
-      .card { width: calc(100vw - 180px); padding: 32px 36px 28px; }
-      .bar { width: 30px; }
+        @media (max-width: 900px) {
+      .card { width: calc(100vw - 64px); }
+      .options-grid { grid-template-columns: 1fr; gap: 12px; }
     }
 
-    @media (max-width: 600px) {
-      .card {
-        width: calc(100vw - 32px);
-        padding: 24px 20px 22px;
-        border-radius: 12px;
-        height: calc(100vh - 80px);
-      }
+        @media (max-width: 600px) {
+      .card { width: calc(100vw - 32px); height: calc(100vh - 80px); }
+      .card-body { padding: 24px 20px 22px; }
+      .opt-btn { height: 52px; font-size: 15px; }
+      .bar { width: 35px; }
     }
   
     @font-face {
