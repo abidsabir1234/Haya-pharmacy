@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($username) || empty($password)) {
         $error = "يرجى إدخال اسم المستخدم وكلمة المرور.";
     } else {
-        $stmt = $pdo->prepare("SELECT id, username, password FROM admins WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT id, username, password_hash AS password FROM admin_users WHERE username = :username");
         $stmt->execute(['username' => $username]);
         $admin = $stmt->fetch();
 

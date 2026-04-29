@@ -20,51 +20,96 @@ if ($branch_id) {
     $params[] = $branch_id;
 }
 if ($start_date) {
-    $where_clauses[] = "DATE(created_at) >= ?";
+    $where_clauses[] = "DATE(submitted_at) >= ?";
     $params[] = $start_date;
 }
 if ($end_date) {
-    $where_clauses[] = "DATE(created_at) <= ?";
+    $where_clauses[] = "DATE(submitted_at) <= ?";
     $params[] = $end_date;
 }
 if ($survey_type_filter) {
-    $where_clauses[] = "survey_type = ?";
+    $where_clauses[] = "feedback_type = ?";
     $params[] = $survey_type_filter;
 }
 $where_sql = $where_clauses ? "WHERE " . implode(" AND ", $where_clauses) : "";
 
 // Stats
-$total_stmt = $pdo->prepare("SELECT COUNT(*) FROM responses $where_sql");
+$total_stmt = $pdo->prepare("SELECT COUNT(*) FROM feedback_responses $where_sql");
 $total_stmt->execute($params);
 $total_responses = $total_stmt->fetchColumn();
 
-$today_stmt = $pdo->prepare("SELECT COUNT(*) FROM responses " . ($where_sql ? $where_sql . " AND " : "WHERE ") . "DATE(created_at) = CURDATE()");
+$today_stmt = $pdo->prepare("SELECT COUNT(*) FROM feedback_responses " . ($where_sql ? $where_sql . " AND " : "WHERE ") . "DATE(submitted_at) = CURDATE()");
 $today_stmt->execute($params);
 $today_responses = $today_stmt->fetchColumn();
 
-// Happy (3) / Neutral (2) / Bad (1) totals across all 4 questions
+// Ensure q3 and q4 columns exist
+try {
+    $pdo->exec("ALTER TABLE feedback_responses ADD COLUMN q3_emoji ENUM('happy', 'neutral', 'sad') DEFAULT 'neutral'");
+    $pdo->exec("ALTER TABLE feedback_responses ADD COLUMN q4_emoji ENUM('happy', 'neutral', 'sad') DEFAULT 'neutral'");
+} catch (PDOException $e) {
+    // Columns already exist or error, ignore
+}
+
+// Happy / Neutral / Sad totals across all questions
 $sentiments = ['happy' => 0, 'neutral' => 0, 'bad' => 0];
-for ($i = 1; $i <= 4; $i++) {
-    $s = $pdo->prepare("SELECT question_{$i}_answer as val, COUNT(*) as cnt FROM responses $where_sql GROUP BY question_{$i}_answer");
-    $s->execute($params);
-    foreach ($s->fetchAll() as $r) {
-        if ($r['val'] == 3) $sentiments['happy']  += $r['cnt'];
-        if ($r['val'] == 2) $sentiments['neutral'] += $r['cnt'];
-        if ($r['val'] == 1) $sentiments['bad']     += $r['cnt'];
+foreach (['q1_emoji', 'q2_emoji', 'q3_emoji', 'q4_emoji'] as $col) {
+    try {
+        $s = $pdo->prepare("SELECT {$col} as val, COUNT(*) as cnt FROM feedback_responses $where_sql GROUP BY {$col}");
+        $s->execute($params);
+        foreach ($s->fetchAll() as $r) {
+            if ($r['val'] === 'happy')   $sentiments['happy']   += $r['cnt'];
+            if ($r['val'] === 'neutral') $sentiments['neutral'] += $r['cnt'];
+            if ($r['val'] === 'sad')     $sentiments['bad']     += $r['cnt'];
+        }
+    } catch (Exception $e) {}
+}
+
+// Chart data per question (split by survey type)
+$chart_data = [];
+foreach (['visit', 'delivery'] as $t) {
+    for ($i = 1; $i <= 4; $i++) {
+        $chart_data["{$t}_q{$i}"] = [0, 0, 0];
     }
 }
 
-// Chart data per question
-$chart_data = [];
-for ($i = 1; $i <= 4; $i++) {
-    $q = $pdo->prepare("SELECT question_{$i}_answer as val, COUNT(*) as count FROM responses $where_sql GROUP BY question_{$i}_answer");
-    $q->execute($params);
-    $counts = ['1' => 0, '2' => 0, '3' => 0];
-    foreach ($q->fetchAll() as $r) $counts[$r['val']] = (int)$r['count'];
-    $chart_data[$i] = array_reverse(array_values($counts)); // Order: Happy (3), Neutral (2), Bad (1)
+$types_to_fetch = $survey_type_filter ? [$survey_type_filter] : ['visit', 'delivery'];
+
+foreach ($types_to_fetch as $type) {
+    $type_where = $where_clauses;
+    $type_params = $params;
+    
+    // Add type filter if it wasn't already in $where_clauses
+    if (!$survey_type_filter) {
+        $type_where[] = "feedback_type = ?";
+        $type_params[] = $type;
+    }
+    
+    $type_sql = $type_where ? "WHERE " . implode(" AND ", $type_where) : "";
+    
+    foreach (['q1_emoji' => 1, 'q2_emoji' => 2, 'q3_emoji' => 3, 'q4_emoji' => 4] as $col => $idx) {
+        try {
+            $q = $pdo->prepare("SELECT {$col} as val, COUNT(*) as count FROM feedback_responses $type_sql GROUP BY {$col}");
+            $q->execute($type_params);
+            $counts = ['happy' => 0, 'neutral' => 0, 'sad' => 0];
+            foreach ($q->fetchAll() as $r) {
+                if (isset($counts[$r['val']])) {
+                    $counts[$r['val']] = (int)$r['count'];
+                }
+            }
+            $chart_data["{$type}_q{$idx}"] = [$counts['happy'], $counts['neutral'], $counts['sad']]; // Order: Happy, Neutral, Sad
+        } catch (Exception $e) {}
+    }
 }
 
-$branches = $pdo->query("SELECT id, branch_name FROM branches ORDER BY branch_name ASC")->fetchAll();
+// Get branches from branches table
+try {
+    $branches = $pdo->query("SELECT id, branch_name, branch_slug FROM branches ORDER BY branch_name ASC")->fetchAll();
+    $branches_count = count($branches);
+} catch (Exception $e) {
+    // Fallback if branches table doesn't exist
+    $branches = $pdo->query("SELECT DISTINCT branch_id as id, branch_id as branch_name, branch_id as branch_slug FROM feedback_responses ORDER BY branch_id ASC")->fetchAll();
+    $branches_count = count($branches);
+}
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -132,7 +177,7 @@ $branches = $pdo->query("SELECT id, branch_name FROM branches ORDER BY branch_na
                     <select name="branch_id">
                         <option value="">الكل</option>
                         <?php foreach ($branches as $b): ?>
-                            <option value="<?php echo $b['id']; ?>" <?php echo $branch_id == $b['id'] ? 'selected' : ''; ?>>
+                            <option value="<?php echo $b['branch_slug'] ?? $b['id']; ?>" <?php echo $branch_id == ($b['branch_slug'] ?? $b['id']) ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($b['branch_name']); ?>
                             </option>
                         <?php endforeach; ?>
@@ -150,7 +195,7 @@ $branches = $pdo->query("SELECT id, branch_name FROM branches ORDER BY branch_na
         </div>
 
         <!-- Summary Cards -->
-        <div class="summary-cards">
+        <div class="summary-cards" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
             <a href="responses.php?sentiment=happy&<?php echo http_build_query($_GET); ?>" class="summary-card card-green text-decoration-none">
                 <div class="card-info">
                     <div class="card-label">عدد التقييمات السعيدة</div>
@@ -187,26 +232,61 @@ $branches = $pdo->query("SELECT id, branch_name FROM branches ORDER BY branch_na
                     <img src="../assets/images/Envelope.svg" alt="Envelope">
                 </div>
             </a>
+            <a href="branches.php" class="summary-card text-decoration-none" style="background-color: #f6edea; border-color: #c09068;">
+                <div class="card-info">
+                    <div class="card-label">إدارة الفروع</div>
+                    <div class="card-value"><?php echo $branches_count ?? 0; ?></div>
+                </div>
+                <div class="card-icon">
+                    <i class="bi bi-shop fs-1" style="color: #c09068;"></i>
+                </div>
+            </a>
         </div>
 
         <!-- Charts -->
-        <div class="charts-grid">
+        <div class="charts-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
             <div class="chart-card">
-                <h6><?php echo ($survey_type_filter === 'delivery') ? 'كيف كانت تجربة التوصيل؟' : 'شلون كانت زيارتك اليوم؟'; ?></h6>
-                <canvas id="chart-q1" height="180"></canvas>
+                <h6>إجمالي التقييمات (جميع الأسئلة)</h6>
+                <canvas id="chart-overall" height="180"></canvas>
+            </div>
+            
+            <?php if ($survey_type_filter === '' || $survey_type_filter === 'visit'): ?>
+            <div class="chart-card">
+                <h6>شلون كانت زيارتك اليوم؟</h6>
+                <canvas id="chart-visit-q1" height="180"></canvas>
             </div>
             <div class="chart-card">
-                <h6><?php echo ($survey_type_filter === 'delivery') ? 'كيف تقيّم سرعة التوصيل؟' : 'كيف تقيّم وقت الانتظار؟'; ?></h6>
-                <canvas id="chart-q2" height="180"></canvas>
+                <h6>كيف كان تعاون فريق حيا معك ؟</h6>
+                <canvas id="chart-visit-q2" height="180"></canvas>
             </div>
             <div class="chart-card">
-                <h6><?php echo ($survey_type_filter === 'delivery') ? 'كيف كان تعامل موصّل الطلب؟' : 'شلون كان تعاون الموظفين وياك؟'; ?></h6>
-                <canvas id="chart-q3" height="180"></canvas>
+                <h6>كيف تقيّم وقت الانتظار؟</h6>
+                <canvas id="chart-visit-q3" height="180"></canvas>
             </div>
             <div class="chart-card">
-                <h6><?php echo ($survey_type_filter === 'delivery') ? 'هل وصل طلبك كاملاً وبحالة جيدة؟' : 'هل كانت المنتجات متوفّرة؟'; ?></h6>
-                <canvas id="chart-q4" height="180"></canvas>
+                <h6>هل كانت المنتجات متوفّرة؟</h6>
+                <canvas id="chart-visit-q4" height="180"></canvas>
             </div>
+            <?php endif; ?>
+
+            <?php if ($survey_type_filter === '' || $survey_type_filter === 'delivery'): ?>
+            <div class="chart-card">
+                <h6>كيف كانت تجربة التوصيل؟</h6>
+                <canvas id="chart-delivery-q1" height="180"></canvas>
+            </div>
+            <div class="chart-card">
+                <h6>كيف كان تعامل موصّل الطلب؟</h6>
+                <canvas id="chart-delivery-q2" height="180"></canvas>
+            </div>
+            <div class="chart-card">
+                <h6>كيف تقيّم سرعة التوصيل؟</h6>
+                <canvas id="chart-delivery-q3" height="180"></canvas>
+            </div>
+            <div class="chart-card">
+                <h6>هل وصل طلبك كاملاً وبحالة جيدة؟</h6>
+                <canvas id="chart-delivery-q4" height="180"></canvas>
+            </div>
+            <?php endif; ?>
         </div>
 
     </div>
@@ -308,10 +388,21 @@ $branches = $pdo->query("SELECT id, branch_name FROM branches ORDER BY branch_na
             });
         }
 
-        makeChart('chart-q1', <?php echo json_encode($chart_data[1]); ?>, faceImgs);
-        makeChart('chart-q2', <?php echo json_encode($chart_data[2]); ?>, faceImgs);
-        makeChart('chart-q3', <?php echo json_encode($chart_data[3]); ?>, faceImgs);
-        makeChart('chart-q4', <?php echo json_encode($chart_data[4]); ?>, productImgs);
+        makeChart('chart-overall', [<?php echo $sentiments['happy']; ?>, <?php echo $sentiments['neutral']; ?>, <?php echo $sentiments['bad']; ?>], faceImgs);
+        
+        <?php if ($survey_type_filter === '' || $survey_type_filter === 'visit'): ?>
+        makeChart('chart-visit-q1', <?php echo json_encode($chart_data['visit_q1']); ?>, faceImgs);
+        makeChart('chart-visit-q2', <?php echo json_encode($chart_data['visit_q2']); ?>, faceImgs);
+        makeChart('chart-visit-q3', <?php echo json_encode($chart_data['visit_q3']); ?>, faceImgs);
+        makeChart('chart-visit-q4', <?php echo json_encode($chart_data['visit_q4']); ?>, faceImgs);
+        <?php endif; ?>
+
+        <?php if ($survey_type_filter === '' || $survey_type_filter === 'delivery'): ?>
+        makeChart('chart-delivery-q1', <?php echo json_encode($chart_data['delivery_q1']); ?>, faceImgs);
+        makeChart('chart-delivery-q2', <?php echo json_encode($chart_data['delivery_q2']); ?>, faceImgs);
+        makeChart('chart-delivery-q3', <?php echo json_encode($chart_data['delivery_q3']); ?>, faceImgs);
+        makeChart('chart-delivery-q4', <?php echo json_encode($chart_data['delivery_q4']); ?>, faceImgs);
+        <?php endif; ?>
 
         // Hamburger Menu Toggle
         document.getElementById('navHamburger').addEventListener('click', function() {
