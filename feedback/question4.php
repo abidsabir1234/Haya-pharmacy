@@ -31,7 +31,7 @@
                     <img src="assets/images/Smile.svg" class="emoji-img" alt="Happy">
                 </button>
                 <div class="emoji-label d-mobile"></div>
-                <div class="emoji-label d-desktop"><?php echo ($survey_type === 'delivery') ? 'إي، كامل وبحالة جيدة' : 'نعم، متوفّرة'; ?></div>
+                <div class="emoji-label d-desktop"><?php echo ($survey_type === 'delivery') ? 'نعم، كامل وبحالة جيدة' : 'نعم، متوفّرة'; ?></div>
             </div>
         </div>
         <div id="selection-error">الرجاء اختيار تقييم قبل الانتقال للصفحة التالية</div>

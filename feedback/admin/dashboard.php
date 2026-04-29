@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin_id'])) {
 $branch_id = $_GET['branch_id'] ?? '';
 $start_date = $_GET['start_date'] ?? '';
 $end_date = $_GET['end_date'] ?? '';
-$survey_type_filter = $_GET['survey_type'] ?? 'visit';
+$survey_type_filter = $_GET['survey_type'] ?? '';
 
 $where_clauses = [];
 $params = [];
@@ -164,12 +164,12 @@ try {
                     <a href="dashboard.php" class="btn-reset"><i class="bi bi-arrow-counterclockwise"></i> إعادة تعيين</a>
                 </div>
                 <div class="filter-group">
-                    <label>الى</label>
-                    <input type="date" name="end_date" value="<?php echo htmlspecialchars($end_date); ?>">
-                </div>
-                <div class="filter-group">
                     <label>من</label>
                     <input type="date" name="start_date" value="<?php echo htmlspecialchars($start_date); ?>">
+                </div>
+                <div class="filter-group">
+                    <label>الى</label>
+                    <input type="date" name="end_date" value="<?php echo htmlspecialchars($end_date); ?>">
                 </div>
                 <!-- Keeping branch filter for functionality, styled to match -->
                 <div class="filter-group">
@@ -245,10 +245,6 @@ try {
 
         <!-- Charts -->
         <div class="charts-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            <div class="chart-card">
-                <h6>إجمالي التقييمات (جميع الأسئلة)</h6>
-                <canvas id="chart-overall" height="180"></canvas>
-            </div>
             
             <?php if ($survey_type_filter === '' || $survey_type_filter === 'visit'): ?>
             <div class="chart-card">
@@ -388,7 +384,6 @@ try {
             });
         }
 
-        makeChart('chart-overall', [<?php echo $sentiments['happy']; ?>, <?php echo $sentiments['neutral']; ?>, <?php echo $sentiments['bad']; ?>], faceImgs);
         
         <?php if ($survey_type_filter === '' || $survey_type_filter === 'visit'): ?>
         makeChart('chart-visit-q1', <?php echo json_encode($chart_data['visit_q1']); ?>, faceImgs);
