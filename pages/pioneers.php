@@ -77,7 +77,7 @@ include __DIR__ . '/../includes/header.php';
                         <div class="haya-feature-icon-circle">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                         </div>
-                        <div class="haya-feature-text">توصيل مجاني</div>
+                        <div class="haya-feature-text">توصيل مجاني (غير شامل الادوية)</div>
                     </div>
                 </div>
                 <!-- Row 2: 2 Wide Items -->
@@ -173,6 +173,10 @@ include __DIR__ . '/../includes/header.php';
                         <div class="haya-term-list-item">
                             <img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Tick" class="haya-tick-icon">
                             <p>يحق للصيدلية تحديد حد أدنى لقيمة الطلبات للاستفادة من ميزة التوصيل المجاني.</p>
+                        </div>
+                        <div class="haya-term-list-item">
+                            <img src="<?= SITE_URL ?>/assets/images/tick.svg" alt="Tick" class="haya-tick-icon">
+                            <p>لا يشمل التوصيل المجاني الأدوية.</p>
                         </div>
                     </div>
                 </div>
