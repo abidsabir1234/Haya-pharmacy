@@ -44,11 +44,11 @@ if ($end_date) {
 
 if ($sentiment) {
     if ($sentiment === 'sad') {
-        $where_clauses[] = "(r.q1_emoji = 'sad' OR r.q2_emoji = 'sad')";
+        $where_clauses[] = "(r.q1_emoji = 'sad' OR r.q2_emoji = 'sad' OR r.q3_emoji = 'sad' OR r.q4_emoji = 'sad')";
     } elseif ($sentiment === 'neutral') {
-        $where_clauses[] = "(r.q1_emoji = 'neutral' OR r.q2_emoji = 'neutral')";
+        $where_clauses[] = "(r.q1_emoji = 'neutral' OR r.q2_emoji = 'neutral' OR r.q3_emoji = 'neutral' OR r.q4_emoji = 'neutral')";
     } elseif ($sentiment === 'happy') {
-        $where_clauses[] = "(r.q1_emoji = 'happy' OR r.q2_emoji = 'happy')";
+        $where_clauses[] = "(r.q1_emoji = 'happy' OR r.q2_emoji = 'happy' OR r.q3_emoji = 'happy' OR r.q4_emoji = 'happy')";
     }
 }
 
@@ -242,6 +242,8 @@ function sentimentHtml($val)
                             <th>نوع الاستبيان</th>
                             <th>تقييم الزيارة/التوصيل</th>
                             <th>وقت الانتظار/سرعة التوصيل</th>
+                            <th>تعاون الفريق/المندوب</th>
+                            <th>توفر المنتج/حالة الطلب</th>
                             <th>رقم الموبايل</th>
                             <th>تعليق</th>
                         </tr>
@@ -257,6 +259,8 @@ function sentimentHtml($val)
                                 <td><?php echo ($row['feedback_type'] ?? 'visit') === 'delivery' ? 'توصيل' : 'زيارة'; ?></td>
                                 <td><?php echo sentimentHtml($row['q1_emoji']); ?></td>
                                 <td><?php echo sentimentHtml($row['q2_emoji']); ?></td>
+                                <td><?php echo sentimentHtml($row['q3_emoji']); ?></td>
+                                <td><?php echo sentimentHtml($row['q4_emoji']); ?></td>
                                 <td style="direction:ltr;"><?php echo htmlspecialchars($row['phone_number'] ?: '-'); ?></td>
                                 <td class="comment-cell"><?php echo htmlspecialchars($row['comment'] ?: '-'); ?></td>
                             </tr>
