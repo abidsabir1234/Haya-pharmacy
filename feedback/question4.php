@@ -7,7 +7,7 @@
         <div class="card-header-custom d-flex justify-content-center align-items-center">
             <div class="question-text">
                 <div class="d-desktop"><?php echo ($survey_type === 'delivery') ? 'هل وصل طلبك كاملاً وبحالة جيدة؟' : 'هل كانت المنتجات متوفّرة؟'; ?></div>
-                <div class="d-mobile">كيف كان تعامل مندوب التوصيل؟</div>
+                <div class="d-mobile"><?php echo ($survey_type === 'delivery') ? 'كيف كان تعامل مندوب التوصيل؟' : 'هل كانت المنتجات متوفّرة؟'; ?></div>
             </div>
         </div>
 
@@ -16,21 +16,21 @@
                 <button class="emoji-btn <?php echo ($_SESSION['q4'] ?? '') == '1' ? 'selected' : ''; ?>" data-value="1" data-step="4">
                     <img src="assets/images/Sad.svg" class="emoji-img" alt="Sad">
                 </button>
-                <div class="emoji-label d-mobile"></div>
+                <div class="emoji-label d-mobile"><?php echo ($survey_type === 'delivery') ? '' : 'لا، مو متوفّرة'; ?></div>
                 <div class="emoji-label d-desktop"><?php echo ($survey_type === 'delivery') ? 'لا، ناقص' : 'لا، مو متوفّرة'; ?></div>
             </div>
             <div class="emoji-wrapper">
                 <button class="emoji-btn <?php echo ($_SESSION['q4'] ?? '') == '2' ? 'selected' : ''; ?>" data-value="2" data-step="4">
                     <img src="assets/images/Neutral-1.svg" class="emoji-img" alt="Neutral">
                 </button>
-                <div class="emoji-label d-mobile"></div>
+                <div class="emoji-label d-mobile"><?php echo ($survey_type === 'delivery') ? '' : 'بعضها متوفر'; ?></div>
                 <div class="emoji-label d-desktop"><?php echo ($survey_type === 'delivery') ? 'بعضه وصل' : 'بعضها متوفر'; ?></div>
             </div>
             <div class="emoji-wrapper">
                 <button class="emoji-btn <?php echo ($_SESSION['q4'] ?? '') == '3' ? 'selected' : ''; ?>" data-value="3" data-step="4">
                     <img src="assets/images/Smile.svg" class="emoji-img" alt="Happy">
                 </button>
-                <div class="emoji-label d-mobile"></div>
+                <div class="emoji-label d-mobile"><?php echo ($survey_type === 'delivery') ? '' : 'نعم، متوفّرة'; ?></div>
                 <div class="emoji-label d-desktop"><?php echo ($survey_type === 'delivery') ? 'نعم، كامل وبحالة جيدة' : 'نعم، متوفّرة'; ?></div>
             </div>
         </div>

@@ -7,7 +7,7 @@
         <div class="card-header-custom d-flex justify-content-center align-items-center">
             <div class="question-text">
                 <div class="d-desktop"><?php echo ($survey_type === 'delivery') ? 'كيف كانت تجربة التوصيل؟' : 'كيف كانت زيارتك اليوم ؟'; ?></div>
-                <div class="d-mobile">ما مدى سهولة طلب الأوردر؟</div>
+                <div class="d-mobile"><?php echo ($survey_type === 'delivery') ? 'ما مدى سهولة طلب الأوردر؟' : 'كيف كانت زيارتك اليوم ؟'; ?></div>
             </div>
         </div>
 

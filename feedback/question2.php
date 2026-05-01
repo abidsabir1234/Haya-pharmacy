@@ -7,7 +7,7 @@
         <div class="card-header-custom d-flex justify-content-center align-items-center">
             <div class="question-text">
                 <div class="d-desktop"><?php echo ($survey_type === 'delivery') ? 'كيف كان تعامل موصّل الطلب؟' : 'كيف كان تعاون فريق حيا معك ؟'; ?></div>
-                <div class="d-mobile">هل تم توصيل الطلب في الوقت المناسب؟</div>
+                <div class="d-mobile"><?php echo ($survey_type === 'delivery') ? 'هل تم توصيل الطلب في الوقت المناسب؟' : 'كيف كان تعاون فريق حيا معك ؟'; ?></div>
             </div>
         </div>
 
