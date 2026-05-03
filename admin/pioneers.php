@@ -91,7 +91,6 @@ $stats = getCardStats('pioneers_cards');
                 <tr>
                     <th style="padding-right:0;">التاريخ والوقت</th>
                     <th>الاسم</th>
-                    <th>جهة العمل</th>
                     <th>تاريخ الميلاد</th>
                     <th>رقم التليفون</th>
                     <th style="padding-left:0;">الجنس</th>
@@ -113,7 +112,6 @@ $stats = getCardStats('pioneers_cards');
                                 <span style="font-weight: 800; color: #555;"><?= $displayTime ?></span>
                             </td>
                             <td class="name-cell"><?= htmlspecialchars($p['full_name']) ?></td>
-                            <td><?= htmlspecialchars($p['business_name'] ?? '-') ?></td>
                             <td><?= htmlspecialchars($p['date_of_birth']) ?></td>
                             <td dir="ltr"><?= htmlspecialchars($p['mobile_number']) ?></td>
                             <td><?= $p['gender'] == 'male' ? 'ذكر' : 'أنثى' ?></td>
