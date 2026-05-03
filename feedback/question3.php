@@ -14,7 +14,8 @@
         <div class="emojis-container mt-5" dir="ltr">
             <div class="emoji-wrapper">
                 <button class="emoji-btn <?php echo ($_SESSION['q3'] ?? '') == '1' ? 'selected' : ''; ?>" data-value="1" data-step="3">
-                    <img src="assets/images/Sad.svg" class="emoji-img" alt="Sad">
+                    <img src="assets/images/Sad.svg" class="emoji-img d-mobile" alt="Sad">
+                    <img src="assets/images/Bad-1.svg" class="emoji-img d-desktop" alt="Bad">
                 </button>
                 <div class="emoji-label d-mobile"><?php echo ($survey_type === 'delivery') ? 'لم يصل' : ''; ?></div>
                 <div class="emoji-label d-desktop"></div>
@@ -28,7 +29,8 @@
             </div>
             <div class="emoji-wrapper">
                 <button class="emoji-btn <?php echo ($_SESSION['q3'] ?? '') == '3' ? 'selected' : ''; ?>" data-value="3" data-step="3">
-                    <img src="assets/images/Smile.svg" class="emoji-img" alt="Happy">
+                    <img src="assets/images/Smile.svg" class="emoji-img d-mobile" alt="Happy">
+                    <img src="assets/images/Ok.svg" class="emoji-img d-desktop" alt="Ok">
                 </button>
                 <div class="emoji-label d-mobile"><?php echo ($survey_type === 'delivery') ? 'نعم كامل و بحالة جيدة ✅' : ''; ?></div>
                 <div class="emoji-label d-desktop"></div>
